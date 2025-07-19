@@ -16,6 +16,7 @@
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    justify-self: flex-end;
     justify-content: space-between;
     padding:  0 2.5%;
 }
@@ -67,7 +68,7 @@
 }
 .styles-btns {
     justify-self: flex-end;
-    align-self: flex-end;
+    align-self: flex-start;
 }
 @media screen and (max-width: 683px){
     .page-title {
