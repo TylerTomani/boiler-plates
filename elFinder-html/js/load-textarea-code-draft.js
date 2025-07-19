@@ -2,12 +2,11 @@
 // File list
 // Load saved index or default to currrent script index
 let iFile = 0
-const workingScriptInputNum = document.querySelector('#workingScriptInputNum')
+// const workingScriptInputNum = document.querySelector('#workingScriptInputNum')
+const draft = 'versions/draft.js'
+const draftWorking = 'versions/draft-working.js'
 const newVersion = 'versions/new.js'
 const workingVersion = 'versions/working-version.js'
-const draft = 'versions/draft.js'
-const draft2 = 'versions/draft2.js'
-const draftWorking = 'versions/draft-working.js'
 
 
 const filesArr = [ draft, draftWorking, workingVersion, newVersion]
