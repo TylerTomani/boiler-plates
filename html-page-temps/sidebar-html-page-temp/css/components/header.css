@@ -32,8 +32,10 @@
 }
 
 .page-header .header-nav > .home-links > a{
-    border: 1px solid red;
+    text-decoration: none;
+    /* border: 1px solid red; */
     /* height: 100%; */
+    font-size: 1.2rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -69,4 +71,15 @@
 }
 .page-header .header-logo-actions img{
     max-height: 100px;
+}
+@media screen and (max-width: 9000px){
+    .page-header .header-nav > .home-links > a#backlink{
+        margin-left: 0%
+    }
+    .page-header .header-nav > .home-links > a#homelink{
+        margin-right: 0;
+    }
+    :root{
+        --links-offset: 30%;
+    }
 }
