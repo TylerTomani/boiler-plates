@@ -1,0 +1,6 @@
+a:focus,a:active{
+    box-shadow: 0 0 10px 6px lightseagreen;
+}
+#homelink:focus,#homelink:active{
+    box-shadow: 0 0 10px 6px rgb(116, 183, 180, 1);   
+}

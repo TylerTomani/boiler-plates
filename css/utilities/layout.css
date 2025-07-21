@@ -1,0 +1,23 @@
+/* flex grid ... */
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: flex-end; */
+    /* background-color: blue; */
+}
+.content-wrapper{
+    display: flex;
+    border: 1px solid #000;
+}
+.items{
+    margin-top: 1%;
+    display: flex;
+
+}
+main {
+    margin: 0 5%;
+    padding-top: 2.5%;
+    height: 90vh ;
+    /* background-color: blue; */
+}

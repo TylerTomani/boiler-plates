@@ -4,7 +4,7 @@
     padding:0;
     box-sizing: border-box;
 }
-body > header {
+.page-wrapper > header {
     display: flex;
     justify-content: space-between;
     padding: 2.5%;

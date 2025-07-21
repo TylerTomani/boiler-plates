@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.page-wrapper > footer.footer-header {
+    display: flex;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    justify-self: flex-end;
+    justify-content: space-between;
+    padding:  0 2.5%;
+}
+
+.main-links{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-links a:active,.main-links a:focus{
+    box-shadow: 0px 2px 3px 3px lightseagreen;
+    color: black;
+}
+.darkMode-btn-container {
+    justify-self: flex-end;
+    align-self: flex-start;
+}
