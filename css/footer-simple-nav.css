@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.page-wrapper > footer.footer-header {
+.page-wrapper > footer.mobile-footer-header {
     display: flex;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -16,6 +16,20 @@
 .main-links{
     display: flex;
     flex-direction: column;
+}
+.mobile-footer-header .main-links > a {
+    font-size: 16px;
+    padding: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    text-decoration: none;
+    /* white-space: nowrap; */
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    box-sizing: border-box;
+    min-height: 40px; /* Optional */
 }
 
 .main-links a:active,.main-links a:focus{

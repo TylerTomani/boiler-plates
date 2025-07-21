@@ -6,6 +6,11 @@
 @import './utilities/spacing.css';
 @import './utilities/effects.css';
 @import './responsive.css';
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 .page-title {
     display: flex;
     width: 100%;
@@ -32,7 +37,7 @@
     display: none;
 }
 
-.page-wrapper main#mainContainer {
+.page-wrapper main {
     height: 75vh;
     margin: 0 2.5%;
     padding: 0 2.5%;

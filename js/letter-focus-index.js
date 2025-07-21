@@ -1,3 +1,4 @@
+const homelink = document.querySelector('#homelink')
 document.addEventListener('keydown', function (e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
@@ -11,7 +12,14 @@ document.addEventListener('keydown', function (e) {
 
     const letteredAs = allAs.filter(a => {
         const text = a.textContent.trim().toLowerCase();
-        return text.startsWith(key);
+        if(key == 'b'){
+            const backlink = document.querySelector('#backlink')
+            if(!backlink){
+                return text.startsWith('h')
+            }
+        }else {
+            return text.startsWith(key);
+        }
     });
 
     if (letteredAs.length === 0) return;
@@ -46,6 +54,7 @@ document.addEventListener('keydown', function (e) {
         }
         letteredAs[iLetter]?.focus();
     }
+    
 
     window.lastLetterPressed = key;
 });

@@ -8,16 +8,24 @@
 }
 .content-wrapper{
     display: flex;
+    flex-direction: column;
     border: 1px solid #000;
 }
 .items{
     margin-top: 1%;
     display: flex;
-
+}
+.items > .item-container{
+    flex-basis: 40%;
+    border: 1px solid blue;
 }
 main {
     margin: 0 5%;
     padding-top: 2.5%;
     height: 90vh ;
     /* background-color: blue; */
+}
+textarea{
+    height: 50%;
+    width: 80%;
 }
