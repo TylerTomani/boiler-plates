@@ -9,3 +9,18 @@
         font-size: 90% ;
     }
 }
+
+@media screen and (max-width: 683px){
+    .page-title {
+        display: flex;
+    }
+
+    .page-wrapper main{
+        padding-top: 5%;
+        height: 68vh;
+        background-color: blue;
+        margin: 0;
+        margin-left: 4%;
+        padding-bottom: 5%;
+    }
+}
