@@ -14,3 +14,8 @@
     font-family: 'Trebuchet MS', Arial, sans-serif;
     box-sizing: border-box;
 }
+.page-wrapper main {
+    margin: 0 2.5%;
+    padding: 0 2.5%;
+    padding-left: 0;
+}

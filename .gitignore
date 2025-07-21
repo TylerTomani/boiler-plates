@@ -1,0 +1,29 @@
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
+
+# Backup and temporary files
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Optional: ignore CSS files in certain states
+# Uncomment if you generate these from a preprocessor like SCSS
+# css/styles-main-boiler-plate.css
+# css/utilities/colors.css
+# css/utilities/text.css
+
+# Node dependencies (if using Node)
+node_modules/
+
+# VS Code settings
+.vscode/
+
+# If using build tools (uncomment based on tools)
+# dist/
+# build/
+# out/

@@ -5,6 +5,7 @@
 @import './utilities/borders.css';
 @import './utilities/spacing.css';
 @import './utilities/effects.css';
+@import './utilities/text.css';
 @import './responsive.css';
 *{
     padding: 0;
@@ -37,12 +38,3 @@
     display: none;
 }
 
-.page-wrapper main {
-    height: 75vh;
-    margin: 0 2.5%;
-    padding: 0 2.5%;
-    padding-left: 0;
-    scrollbar-width: none;
-    overflow: hidden;
-    overflow-y: scroll;
-}

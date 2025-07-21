@@ -1,4 +1,11 @@
 /* flex grid ... */
+.page-wrapper main {
+    height: 70vh;
+    
+    scrollbar-width: none;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .page-wrapper{
     display: flex;
     flex-direction: column;
@@ -12,17 +19,25 @@
     border: 1px solid #000;
 }
 .items{
-    margin-top: 1%;
+    margin: 1% 0;
     display: flex;
 }
 .items > .item-container{
-    flex-basis: 40%;
-    border: 1px solid blue;
+    flex-basis: 33%;
+    font-size: .8rem;
+    height: 8vh;
+    margin-left: 2%;
+    /* border: 1px solid blue; */
+}
+.items > .item-container > h3{
+    margin-top: 1%;
+    margin-left: 2%;
 }
 main {
     margin: 0 5%;
     padding-top: 2.5%;
-    height: 90vh ;
+    height: 40vh ;
+    /* overflow: hidden; */
     /* background-color: blue; */
 }
 textarea{
