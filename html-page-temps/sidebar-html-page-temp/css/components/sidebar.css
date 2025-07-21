@@ -1,0 +1,43 @@
+/* Default */
+:root {
+  --sidebar-width: 10%;
+  --main-content-width: 90%;
+  --sidebar-collapsed-width: 10px;
+}
+
+/* Layout container */
+main.main-container {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.side-bar {
+  width: var(--sidebar-width);
+  min-width: 120px;
+  transition: width 0.3s ease;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+/* Main content */
+.main-content-container {
+  width: var(--main-content-width);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: width 0.3s ease;
+}
+
+/* When collapsed */
+main.main-container.collapsed .side-bar {
+  width: var(--sidebar-collapsed-width);
+  min-width: var(--sidebar-collapsed-width);
+}
+
+main.main-container.collapsed .main-content-container {
+  width: calc(100% - var(--sidebar-collapsed-width));
+}
