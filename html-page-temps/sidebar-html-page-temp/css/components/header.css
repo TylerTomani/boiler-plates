@@ -23,11 +23,13 @@
     flex-basis: 50%;
 }
 .page-header .header-nav > .web-links > a{
-    /* display: flex; */
-    /* flex-direction: column; */
+    text-decoration: none;
     border: 1px solid black;
     display: flex;  
     justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    flex-grow: 1;
 }
 
 .page-header .header-logo-actions{
