@@ -79,6 +79,9 @@
     .page-header .header-nav > .home-links > a#homelink{
         margin-right: 0;
     }
+    .page-header .header-logo-actions img{
+        max-height: 90px;
+    }
     :root{
         --links-offset: 30%;
     }
