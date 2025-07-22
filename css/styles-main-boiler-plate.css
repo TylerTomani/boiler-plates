@@ -9,6 +9,7 @@
 @import './responsive.css';
 *{
     padding: 0;
+    background-color: blue;
     margin: 0;
     box-sizing: border-box;
 }
