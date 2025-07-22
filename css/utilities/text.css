@@ -1,3 +1,6 @@
 a.item-container {
     text-decoration: none;
 }
+.items > .item-container{
+    font-size: .8rem;
+}

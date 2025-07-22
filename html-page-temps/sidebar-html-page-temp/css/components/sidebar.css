@@ -2,7 +2,7 @@
 :root {
   --sidebar-width: 10%;
   --main-content-width: 90%;
-  --sidebar-collapsed-width: 10px;
+  --sidebar-collapsed-width: 20px;
 }
 
 /* Layout container */
@@ -29,13 +29,16 @@ main.main-container {
   width: var(--main-content-width);
   padding: 1rem;
   overflow-y: auto;
-  transition: width 0.3s ease;
+  transition: width 0.1s ease;
 }
 
 /* When collapsed */
 main.main-container.collapsed .side-bar {
-  width: var(--sidebar-collapsed-width);
-  min-width: var(--sidebar-collapsed-width);
+    width: var(--sidebar-collapsed-width);
+    min-width: var(--sidebar-collapsed-width);
+}
+main.main-container.collapsed .side-bar .parts{
+    display: none;
 }
 
 main.main-container.collapsed .main-content-container {

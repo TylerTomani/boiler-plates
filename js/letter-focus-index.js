@@ -5,7 +5,7 @@ document.addEventListener('keydown', function (e) {
     const key = e.key.toLowerCase();
     if (key.length !== 1 || !/^[a-z0-9]$/.test(key)) return;
 
-    const allAs = [...document.querySelectorAll('a')].filter(a => {
+    const allAs = [...document.querySelectorAll('a,[id]')].filter(a => {
         const rect = a.getBoundingClientRect();
         return a.offsetParent !== null && rect.width > 0 && rect.height > 0;
     });
@@ -16,6 +16,8 @@ document.addEventListener('keydown', function (e) {
             const backlink = document.querySelector('#backlink')
             if(!backlink){
                 return text.startsWith('h')
+            } else {
+                return text.startsWith('b')
             }
         }else {
             return text.startsWith(key);
