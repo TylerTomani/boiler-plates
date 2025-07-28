@@ -4,20 +4,48 @@ import { loadTimeline } from './sentenceData.js';
 let vidId = 'IGHfPrIYngg'
 let sentenceTimeline = [];
 let currentSentenceIndex = 0;
+const sentencesContainer = document.querySelector('.sentences-container')
+// We will add changing sentence language here when time comes ....
+function createSentenceElements(sentenceTimeline){
+  console.log(sentenceTimeline)
+  sentenceTimeline.forEach(({ id, chineseChar, pinyin: pinyinText, english: englishText }) => {  
+    const sentence = document.createElement('div')
+    const chineseContainer = document.createElement('div')
+    const chineseCharEl = document.createElement('p')
+    const pinyinEl = document.createElement('p')
+    const englishEl = document.createElement('p')
+    sentence.setAttribute('id',id)
+    chineseCharEl.innerText = chineseChar
+    pinyinEl.innerText = pinyinText
+    englishEl.innerText = englishText
+    console.log(sentence)
 
+    sentence.classList.add('sentence')
+    chineseContainer.classList.add('chinese-container')
+    chineseCharEl.classList.add('chinese-char')
+    pinyinEl.classList.add('pinyin')
+    englishEl.classList.add('english')
+    chineseContainer.appendChild(chineseCharEl)
+    chineseContainer.appendChild(pinyinEl)
+    sentence.appendChild(chineseContainer)
+    sentence.appendChild(englishEl)
+    sentencesContainer.append(sentence)
+
+  })
+}
 loadTimeline()
   .then((data) => {
     sentenceTimeline = data;
     let initialized = false;
-
+    createSentenceElements(sentenceTimeline)
   document.body.addEventListener('keydown', (e) => {
     const player = getPlayer();
     if (!player) return;
 
     const currentTime = player.getCurrentTime();
-    if(e.key == 'p'){
-      const part2 = document.querySelector('#part2')
-      part2.focus()
+    if(e.key == 'h'){
+      const homelink = document.querySelector('#homelink')
+      homelink.focus()
     }
     // ⏯ Spacebar toggle
     if (e.code === 'Space') {

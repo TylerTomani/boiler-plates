@@ -1,25 +1,25 @@
 [
   { "time": 62,
-      "id": "s0",   
-      "chinese-char": "祝你生日快乐", 
+      "id": "s1",   
+      "chineseChar": "祝你生日快乐", 
       "pinyin":"Zhù nǐ shēngrì kuàilè",
       "enlgish":"Happy birthday to you"
   },
-  { "time": 66,
+  { "time": 65,
       "id": "s2",   
-      "chinese-char": "祝你生体健康", 
+      "chineseChar": "祝你生体健康", 
       "pinyin":"Zhù nǐ shēntǐ jiànkāng",
       "enlgish":"Wish you good health"
   },
   { "time": 70,
       "id": "s3",   
-      "chinese-char": "祝你万事如意", 
+      "chineseChar": "祝你万事如意", 
       "pinyin":"Zhù nǐ wànshì rúyì",
       "enlgish":"Wish you all the best"
   },
   { "time": 74,
       "id": "s4",   
-      "chinese-char": "祝你发财新年好", 
+      "chineseChar": "祝你发财新年好", 
       "pinyin":"Zhù nǐ fācái xīnnián hǎo",
       "enlgish":"wish you a prosperous new year"
   }
