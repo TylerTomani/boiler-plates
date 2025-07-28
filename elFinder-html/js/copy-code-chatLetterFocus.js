@@ -20,13 +20,11 @@ copyCodes.forEach(el => {
         if(e.key == 'c' && e.metaKey){
             if(e.target.value){
                 copyTextToClipboard(e.target.value)
-
             }
             if(e.target.innerText){
                 copyTextToClipboard(e.target.innerText)
                 
             }
-            animate(e.target)
             // copyTextToClipboard(e.target.innerText)
         }
     })
@@ -35,6 +33,7 @@ function handleCopy(el,animateCode) {
     // Always copy the text from mainScript regardless of source
     const textToCopy = mainScript.value || mainScript.innerText || "";
     copyTextToClipboard(textToCopy);
+    console.log(animateCode)
     if(!animateCode){
         return 
     }
@@ -46,14 +45,19 @@ function setupCopyShortcut(element) {
         // Check Command (metaKey) + C (case-insensitive)
         if (e.metaKey && (e.key === 'c' || e.key === 'C')) {
             e.preventDefault(); // prevent default copy just to be safe
-            handleCopy(e.target);
+            handleCopy(e.target,true);
         }
     });
 
     // Optional: animate on click for code elements as you had
     element.addEventListener('click', e => {
         e.preventDefault()
-        handleCopy(e.taget,false);
+        if(e.id == 'mainScript'){
+            handleCopy(e.taget, false);
+            return
+        }
+        // handleCopy(e.taget, true);
+        
     });
 }
 

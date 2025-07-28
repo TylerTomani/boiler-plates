@@ -43,10 +43,10 @@ loadTimeline()
     if (!player) return;
 
     const currentTime = player.getCurrentTime();
-    if(e.key == 'h'){
-      const homelink = document.querySelector('#homelink')
-      homelink.focus()
-    }
+    // if(e.key == 'h'){
+    //   const homelink = document.querySelector('#homelink')
+    //   homelink.focus()
+    // }
     // ⏯ Spacebar toggle
     if (e.code === 'Space') {
       e.preventDefault();

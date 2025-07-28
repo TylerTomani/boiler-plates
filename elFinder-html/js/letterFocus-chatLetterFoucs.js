@@ -1,5 +1,5 @@
-import { nxtBtn } from "./load-textarea-code.js"
-import { backBtn } from "./load-textarea-code.js"
+import { nxtBtn } from "./load-textarea-code-draft.js"
+import { backBtn } from "./load-textarea-code-draft.js"
 const mainScript = document.querySelector('#mainScript')
 // let elementImg = document.querySelector('#elementImg')
 const homelink = document.querySelector('#homelink')
@@ -88,7 +88,6 @@ addEventListener('keydown', e => {
 
 
     }
-    console.log(key)
     if(e.metaKey && key === 'arrowup'){
         focusedMainScript = false 
         e.preventDefault()

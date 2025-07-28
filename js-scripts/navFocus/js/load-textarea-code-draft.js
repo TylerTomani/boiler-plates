@@ -5,7 +5,7 @@ let iFile = 0
 const workingScriptInputNum = document.querySelector('#workingScriptInputNum')
 
 
-const letterFocus = 'versions/letterFocus/letterFocus.js'
+const letterFocusAs = 'versions/letterFocus/letter-focus-temp-as.js'
 
 // .... rewriting letter focus versions putting here when done
 const workingVersion = 'versions/working-version.js'
@@ -14,7 +14,7 @@ const draft2 = 'versions/draft2.js'
 const draftWorking = 'versions/draft-working.js'
 
 
-const filesArr = [ letterFocus, draft, draftWorking, workingVersion]
+const filesArr = [ letterFocusAs, draft, draftWorking, workingVersion]
 
 // DOM elements
 export const nxtBtn = document.querySelector('#nxtBtn')

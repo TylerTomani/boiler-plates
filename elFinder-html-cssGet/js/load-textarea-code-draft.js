@@ -2,19 +2,14 @@
 // File list
 // Load saved index or default to currrent script index
 let iFile = 0
-const workingScriptInputNum = document.querySelector('#workingScriptInputNum')
-
-
-const letterFocusAs = 'versions/letterFocus/letter-focus-temp-as.js'
-
-// .... rewriting letter focus versions putting here when done
-const workingVersion = 'versions/working-version.js'
+// const workingScriptInputNum = document.querySelector('#workingScriptInputNum')
 const draft = 'versions/draft.js'
-const draft2 = 'versions/draft2.js'
 const draftWorking = 'versions/draft-working.js'
+const newVersion = 'versions/new.js'
+const workingVersion = 'versions/working-version.js'
 
 
-const filesArr = [ letterFocusAs, draft, draftWorking, workingVersion]
+const filesArr = [ draft, draftWorking, workingVersion, newVersion]
 
 // DOM elements
 export const nxtBtn = document.querySelector('#nxtBtn')
@@ -81,18 +76,19 @@ function changeScript(reverse) {
 // Color background based on current file
 function changeBackground() {
     if (iFile === 0) {
-        // mainScript.style.background = 'rgb(200,0,2,.75)'
+        mainScript.style.background = 'rgb(200,0,2,.75)'
         // mainScript.style.color = 'lightgrey'
     }else {
         mainScript.style.color = 'black'
         
     }
      if (iFile === 1) {
-        mainScript.style.background = 'lightgrey'
+         mainScript.style.background = 'lightgrey'
+         mainScript.style.background = 'rgb(14,42,47,.35)'
     } else if (iFile === 2) {
-        mainScript.style.background = 'rgb(14,42,47,.35)'
+         mainScript.style.background = 'lightgrey'
     } else {
-        // mainScript.style.background = 'rgb(3,100,22,.45)'
+        mainScript.style.background = 'rgb(3,100,22,.45)'
     }
 }
 
