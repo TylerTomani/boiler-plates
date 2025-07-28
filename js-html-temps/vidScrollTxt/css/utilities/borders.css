@@ -1,0 +1,12 @@
+.video-container {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
+.video-container iframe {
+  border: none;
+  border-radius: 0.25rem;
+}
+.sentence {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
