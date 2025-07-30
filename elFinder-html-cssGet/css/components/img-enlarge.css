@@ -1,0 +1,15 @@
+/* change to .img-enlarge */
+.enlarge {
+    display: block !important;
+    z-index: 9999 !important;
+    position: fixed;
+    top: 50%;
+    /* left: 50%; */
+    max-width: 90vw;
+    max-height: 60vh;
+    transition: transform 0.2s ease;
+    /* You can't click when this is on  */
+    /* pointer-events: none; */
+    transform: translate(-50%, -50%) scale(1.5);
+    /* optional: prevents interaction while enlarged */
+}

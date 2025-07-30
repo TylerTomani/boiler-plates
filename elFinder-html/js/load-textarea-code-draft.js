@@ -12,9 +12,10 @@ const workingVersion = 'versions/working-version.js'
 const draft = 'versions/draft.js'
 const draft2 = 'versions/draft2.js'
 const draftWorking = 'versions/draft-working.js'
+const filesArr = [ draft, draftWorking, workingVersion]
+// const filesArr = [ letterFocusAs, draft, draftWorking, workingVersion]
 
 
-const filesArr = [ letterFocusAs, draft, draftWorking, workingVersion]
 
 // DOM elements
 export const nxtBtn = document.querySelector('#nxtBtn')

@@ -1,0 +1,26 @@
+@import url('./default-colors.css');
+@import url('./mobile-footer-header.css');
+@import url('./copy-code.css');
+@import url('./responsive.css');
+/** components*/
+@import url('components/version-elements-container.css');
+@import url('components/browser-tools-code.css');
+@import url('components/test-script-tools-container.css');
+@import url('components/popup.css');
+@import url('components/img-enlarge.css');
+
+/** utilities*/
+@import url('utilities/borders.css');
+@import url('utilities/colors.css');
+@import url('utilities/layout.css');
+@import url('utilities/postion.css');
+@import url('utilities/sizing.css');
+@import url('utilities/spacing.css');
+@import url('utilities/text.css');
+@import url('utilities/zindex.css');
+@import url('utilities/effects.css');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

@@ -1,0 +1,14 @@
+.popup {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+}
+#xBtnPopup{
+    display: block;
+    position: sticky;
+    border: 2px solid black;
+    padding: 2%;
+    background-color: white;
+    background-color: whitesmoke;
+    right: 0;
+}

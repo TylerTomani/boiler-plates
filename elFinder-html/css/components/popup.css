@@ -1,3 +1,12 @@
+
+.code-elements-container.popup {
+    max-width: 50%;
+}
+.code-elements-container.popup > .code-container > pre,
+.code-elements-container.popup > .code-container > textarea{
+    text-wrap: wrap;
+    white-space: wrap;
+}
 #elementImg {
     z-index: 0;
     right: 0;
@@ -34,4 +43,8 @@
     height: 25px;
         width: 35px;
         padding: 1%;
+}
+pre.selector {
+    max-height: 40px !important;
+    background-color: lightcyan;
 }

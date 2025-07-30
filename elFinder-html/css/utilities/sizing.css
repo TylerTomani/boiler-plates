@@ -6,7 +6,7 @@
 }
 
 .code-elements-container .code-container .copy-code {
-    min-height: 120px;
+    /* min-height: 120px; */
 }
 .copy-code {
     width: 100%;

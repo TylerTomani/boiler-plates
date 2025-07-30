@@ -34,3 +34,19 @@ h4 .dark-mode p {
 .dark-mode main>aside {
     border-right: 1px solid whitesmoke;
 }
+.dark-mode .main-links a{
+    border: 1px solid whitesmoke;
+
+}
+.dark-mode .version {
+    border: 1px solid whitesmoke;
+    color: white;
+}
+.dark-mode .main-links a:focus,
+.dark-mode .main-links a:active {
+    color: white;
+}
+
+.dark-mode textarea {
+    background: rgb(40,38,46,.05);
+}

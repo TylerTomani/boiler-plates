@@ -1,127 +1,100 @@
-// 1 - nav-to-questions
+// draft - nice
 (() => {
-    // 🆕 Bookmark storage
-    const bookmarkedQuestions = new Set();
-    let bookmarkIndex = 0;
+  	const style = document.createElement('style');
+  	style.textContent = `
+    	.focused {
+    	  box-shadow: 0 0 0 3px #4285f4 !important;
+    	  background-color: rgba(66, 133, 244, 0.25) !important;
+    	  border-radius: 6px !important;
+    	}
+	`;
+	document.head.appendChild(style);
 
-    // 🆕 Add CSS for bookmarked outline
-    const bookmarkStyle = document.createElement('style');
-    bookmarkStyle.textContent = `
-        .bookmarked-question {
-            outline: 3px solid yellow !important;
-            outline-offset: 2px;
-        }
-    `;
-    document.head.appendChild(bookmarkStyle);
+	let lastLetterPressed = null;
+	let currentFocusedLink = null;
+	let lastFocusedElement = null;
+	function getListItem(el) {
+    while (el && el !== document.body) {
+      if (
+        el.classList.contains('mTpL7c') ||
+        el.getAttribute('role') === 'listitem' ||
+        el.classList.contains('zReHs')
+      ) {
+        return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+  function getAllLinks() {
+    return [...document.querySelectorAll('span.R1QWuf, a.zReHs > h3, a.zReHs')]
+      .map(el => {
+        const span = el.tagName === 'H3' || el.tagName === 'A' ? el : null;
+        const link = el.closest('a.C6AK7c, [role="button"], a.zReHs');
+        return link && (span?.innerText || link.innerText)?.trim()
+          ? { span: span || link, link }
+          : null;
+      })
+      .filter(Boolean)
+      .filter(({ link }) => {
+        const rect = link.getBoundingClientRect();
+        return link.offsetParent !== null && rect.width > 0 && rect.height > 0;
+      });
+  }
 
-    // Original Script (trimmed here for brevity)
-    // Place your entire original script content here
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-    // Replace this function definition block:
-    document.addEventListener('keydown', (e) => {
-        const key = e.key.toLowerCase();
-        const isCmdOrCtrl = e.metaKey || e.ctrlKey;
-        const isShift = e.shiftKey;
+    const key = e.key.toLowerCase();
+    if (key.length !== 1 || !/^[a-z0-9]$/.test(key)) return;
 
-        // Existing shortcut handling ...
-        // Your original full event handler content goes here
+    const allLinks = getAllLinks();
+    const matchingLinks = allLinks.filter(({ span }) =>
+      span.innerText.trim().toLowerCase().startsWith(key)
+    );
+    if (matchingLinks.length === 0) return;
 
-        // Add this at the end of your keydown listener:
-        if (key === 'b') {
-            e.preventDefault();
-
-            if (!targets.length) updateTargets();
-            let active = document.activeElement;
-            if (!targets.includes(active) && lastFocusedTarget && targets.includes(lastFocusedTarget)) {
-                active = lastFocusedTarget;
-            }
-            if (!active || !targets.includes(active)) return;
-
-            const index = targets.indexOf(active);
-            const article = getArticleForElement(active);
-
-            if (!article) return;
-
-            const key = article.dataset.testid;
-            if (bookmarkedQuestions.has(key)) {
-                bookmarkedQuestions.delete(key);
-                article.classList.remove('bookmarked-question');
-                showPopup(`🔖 Removed bookmark from question #${index + 1}`);
-            } else {
-                bookmarkedQuestions.add(key);
-                article.classList.add('bookmarked-question');
-                showPopup(`🔖 Bookmarked question #${index + 1}`);
-            }
-            return;
-        }
-
-        if (key === 'b' && isShift) {
-            e.preventDefault();
-            if (bookmarkedQuestions.size === 0) {
-                showPopup('No bookmarked questions');
-                return;
-            }
-            updateTargets();
-
-            const bookmarkedEls = targets.filter(el => {
-                const article = getArticleForElement(el);
-                return article && bookmarkedQuestions.has(article.dataset.testid);
-            });
-
-            if (bookmarkedEls.length === 0) {
-                showPopup('No valid bookmarked questions');
-                return;
-            }
-
-            bookmarkIndex = (bookmarkIndex + 1) % bookmarkedEls.length;
-            const el = bookmarkedEls[bookmarkIndex];
-            const idx = targets.indexOf(el);
-
-            scrollToTarget(idx);
-            scrollStates.set(el, 0);
-            lastFocusedTarget = el;
-            updateLastNonFirstFocused(el);
-            currentOffset = Math.floor(idx / 10) * 10;
-
-            showPopup(`🔖 Jumped to bookmarked question #${idx + 1}`);
-            showQuestionBanner(idx + 1);
-            return;
-        }
-    }, true);
-    function scrollToTarget(index) {
-        const el = targets[index];
-        if (!el) return;
-        targets.forEach(target => {
-            target.style.outline = 'none';
-            const parent = target.closest('div.relative');
-            if (parent) parent.style.outline = '';
-        });
-        outlineFocus(el);
-
-        // If only one question, always scroll to 'start' (top)
-        let scrollBlock = 'start';
-
-        if (targets.length > 1) {
-            const scrollIndex = scrollStates.get(el) ?? 0; // 0 = start
-            scrollBlock = scrollCycleOrder[scrollIndex] || 'start';
-        } else {
-            // Clear any scroll state for this single question to keep consistent behavior
-            scrollStates.set(el, 0);
-        }
-
-        el.focus();
-        el.scrollIntoView({ behavior: 'instant', block: scrollBlock });
-
-        // 🧠 Optional tweak for extra space when scrolling to 'end'
-        if (scrollBlock === 'end') {
-            setTimeout(() => {
-                window.scrollBy(0, 150); // push it slightly further down if needed
-            }, 50);
-        }
+    if (lastFocusedElement) {
+      lastFocusedElement.classList.remove('focused');
+      lastFocusedElement = null;
     }
 
+    const activeIndexMatch = matchingLinks.findIndex(obj => obj.link === currentFocusedLink);
 
+    let newIndex;
+    if (key !== lastLetterPressed) {
+      newIndex = e.shiftKey ? matchingLinks.length - 1 : 0;
+    } else {
+      newIndex =
+        activeIndexMatch === -1
+          ? (e.shiftKey ? matchingLinks.length - 1 : 0)
+          : (e.shiftKey
+              ? (activeIndexMatch - 1 + matchingLinks.length)
+              : (activeIndexMatch + 1)) % matchingLinks.length;
+    }
 
+    const newLink = matchingLinks[newIndex]?.link;
+	if (newLink) {
+		newLink.focus();
+		// Prefer to focus the <h3> inside the link if available
+		const listItem = getListItem(newLink.parentElement)
+		const h3 = newLink.querySelector('h3');
+		if(listItem){
+			listItem.classList.add('focused');
+			lastFocusedElement = listItem;
+		} else 
+		if (h3) {
+		h3.classList.add('focused');
+		lastFocusedElement = h3;
+		} else {
+		newLink.classList.add('focused');
+		lastFocusedElement = newLink;
+		}
 
+		currentFocusedLink = newLink;
+		lastLetterPressed = key;
 
+		console.log('Focused:', newLink.innerText.trim());
+	}
+  });
 })();
