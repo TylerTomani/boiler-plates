@@ -1,0 +1,15 @@
+@import url('utilities/layout.css');
+@import url('utilities/borders.css');
+@import url('utilities/colors.css');
+@import url('utilities/effects.css');
+@import url('utilities/highlight.css');
+@import url('utilities/spacing.css');
+@import url('utilities/sizing.css');
+@import url('utilities/text.css');
+
+@import url('./responsive.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
