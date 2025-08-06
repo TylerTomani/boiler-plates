@@ -5,11 +5,7 @@
   gap: 2rem;
 }
 
-/* Video (Sticky Right) */
-.video-container {
-  position: sticky;
-  top: 1rem;
-}
+
 /* Sentence Container */
 .sentences-scroll-container {
   display: flex;

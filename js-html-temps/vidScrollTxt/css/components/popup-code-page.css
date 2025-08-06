@@ -1,0 +1,35 @@
+body {
+    position: relative;
+}
+#popupCodePage{ 
+    display: none;
+}
+#popupCodePage.active{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border: 1px solid rebeccapurple;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: coral;
+    background-color: white;
+    background-color: rgba(220, 240, 240, 0.8);
+    z-index: 1000;
+}
+#popupCodePage h6{
+
+    font-size: 5rem;
+}
+#popupCodePage > .versions-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rebeccapurple; 
+}
+#popupCodePage > .versions-container > .version > textarea{
+    width:90vw;
+    margin-left: 2.5%;
+    padding-left: 2%;
+    height: 100vh;
+}
