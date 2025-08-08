@@ -1,0 +1,10 @@
+:root{
+    --highlight-color: orange;
+}
+.header-nav a:focus,.header-nav a:hover,.header-nav a:active{
+    color: var(--highlight-color);
+    background-color: blue;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}   
+ 

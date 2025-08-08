@@ -6,9 +6,11 @@
     <title>sidebar-html-page-temp</title>
     <!-- tutorial-temp is the original version of sections-temp -->
     <link rel="stylesheet" href="css/main.css">
-    <script src="js/inject-content.js" defer></script>
+    <!-- <script src="js/inject-content.js" defer></script> -->
     <!-- <link rel="icon" href="favicon.ico"> -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="js/main-script.js" defer></script>
+    <script type="module" src="js/letterFocus-side-bar-temp.js" defer></script>
 </head>
 <body class="dark-mode">
 <!-- <body class=""> -->
@@ -47,41 +49,42 @@
                     <i autofocus id="sideBarBtn" tabindex="0" class="bx bx-menu"></i>
                     <!-- partsTxt is an awful name -->
                 </div>
-                <div class="parts">
-                    <h2 tabindex="0" class="side-bar-section-title">Parts</h2>
-                    <ul class="">
-                        <li><a   tabindex="0" href="parts/01/01.html">1. Inheritance w/ <code class="b txt80">classes</code>
+                <div class="side-bar-links-container">
+                    <!-- <h2 tabindex="0" class="side-bar-section-title">Parts</h2> -->
+                    <h2  class="side-bar-section-title">Parts</h2>
+                    <ul class="side-bar-links-ul">
+                        <li><a   tabindex="0" href="side-bar-links/01/01.html">1. Inheritance w/ <code class="b txt80">classes</code>
                             <br><code>.<span class="r">__proto__</span></code> depreciated
                             </a>
                         </li>
-                        <li><a    tabindex="0" href="parts/02/02.html">2. <code class="m">[[Prototype]]</code>
+                        <li><a    tabindex="0" href="side-bar-links/02/02.html">2. <code class="m">[[Prototype]]</code>
                         <br><code>.<span class="y">prototype</span></code>
                         <br>vs</a>
                         <br><code>.<span class="y">__proto__</span></code>
                         </li>
                         <li><a data-video="https://youtu.be/jnME98ckDbQ?list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&t=497" tabindex="0" 
-                            href="parts/03/03.html">3. Prototypal Inheritance
+                            href="side-bar-links/03/03.html">3. Prototypal Inheritance
                         <sup>creating class <code>function()</code></sup></a></li>
                         <li><a   data-video="
                             https://youtu.be/jnME98ckDbQ?list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&t=638
                             " tabindex="0"
-                                href="parts/04/04.html">4. <code class="m">this</code> in the class <code>constructor function</code> <code class="b">Person</code></a> 
+                                href="side-bar-links/04/04.html">4. <code class="m">this</code> in the class <code>constructor function</code> <code class="b">Person</code></a> 
                             </li>
                         <li><a  data-video="
                             https://youtu.be/jnME98ckDbQ?list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&t=825
                             " tabindex="0"
-                                href="parts/05/05.html">5. Add properties to this <br>
+                                href="side-bar-links/05/05.html">5. Add properties to this <br>
                             add methods to <code class="y">prototype</code> of parent</a> 
                             </li>
                         <li><a   data-video="
                             
                             " tabindex="0"
-                                href="parts/06/06.html">6. <code class="r">extends</code></a> 
+                                href="side-bar-links/06/06.html">6. <code class="r">extends</code></a> 
                             </li>
                         <li><a   data-video="
                             https://youtu.be/jnME98ckDbQ?list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP&t=968
                             " tabindex="0"
-                                href="parts/07/07.html">7. <sup>2 other ways, create objects that inherit</sup>
+                                href="side-bar-links/07/07.html">7. <sup>2 other ways, create objects that inherit</sup>
                                 <br><sup><code>Object.<span class="y">create()</span></code> </sup>
                                 <br> <sup><code>Object.<span class="y">setPrototypeof()</span></code></sup>
                                 </a> 
