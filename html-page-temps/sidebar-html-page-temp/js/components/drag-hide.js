@@ -14,6 +14,9 @@ document.addEventListener('touchend', (e) => {
     if (swipeDistance < -50 && !sideBar.classList.contains('hidden')) {
         sideBar.classList.toggle('hidden');
     }
+    if (swipeDistance < 50 && !sideBar.classList.contains('hidden')) {
+        sideBar.classList.toggle('hidden');
+    }
 });
 function getSideBar(parent) {
     if (parent.classList.contains('side-bar')) {
