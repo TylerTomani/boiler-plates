@@ -1,6 +1,9 @@
 import { mainTargetDiv } from "./main-script.js";
 import { numFocus } from "./numFocus.js";
+import {isSideBarFocused} from "./main-script.js";
+import { sideBarLinks } from "./numFocus.js";
 let sideBarFocused = false
+let iSideBarLinks = 0
 export function letterFocus(e,key) {
     // Prevent multiple listeners
     if (window._keyboardFocusSidebarInitialized) return;
@@ -55,6 +58,19 @@ export function letterFocus(e,key) {
             return el.offsetParent !== null && rect.width > 0 && rect.height > 0;
         });
 
+        
+        console.log(iSideBarLinks)
+        if(isSideBarFocused() && key === 'a') {
+            if(e.shiftKey){
+                // Focus the first sidebar link
+                iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length; // Cycle backwards
+            } else {
+                iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length; // Cycle through links
+                // Focus the last sidebar link
+            }
+            sideBarLinks[iSideBarLinks]?.focus();
+            return;
+        }
         // -------------------
         // Match elements
         // -------------------
@@ -80,12 +96,10 @@ export function letterFocus(e,key) {
             if ((el.id === 'sideBarBtn' || el.id === 'navLessonTitle') && normalizeName(el).startsWith(key)) return true;
             return false;
         });
-
         if (priorityEls.length) {
             const set = new Set(priorityEls);
             matchingEls = [...priorityEls, ...matchingEls.filter(el => !set.has(el))];
         }
-
         if (matchingEls.length === 0) return;
 
         // -------------------
@@ -94,9 +108,6 @@ export function letterFocus(e,key) {
         const active = document.activeElement;
         let iActiveAll = allEls.indexOf(active);
         if (iActiveAll === -1) iActiveAll = -1;
-
-        console.log(key)
-        
             if (key !== window.lastLetterPressed) {
                 // NEW LETTER PRESS → forward/backward
                 let target;

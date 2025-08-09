@@ -9,7 +9,7 @@ export const navLessonTitle = document.querySelector('#navLessonTitle');
 let sideBarFocused = false;
 
 
-[navLessonTitle,sideBarBtn].forEach(el => {
+[navLessonTitle,sideBarBtn,sideBar].forEach(el => {
     el.addEventListener('keydown', (e) => {
         // Handle Enter and Space keys for toggling sidebar
         if (e.key === 'Enter' || e.key === ' ') {
@@ -24,6 +24,7 @@ let sideBarFocused = false;
     })
     el.addEventListener('click', e =>{
         e.preventDefault(); // Prevent default action
+        e.stopPropagation()
         togggleSidebar(mainContainer,e)
     });
 })
