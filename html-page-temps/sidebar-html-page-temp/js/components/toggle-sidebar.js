@@ -1,19 +1,12 @@
-
-export function togggleSidebar(mainContainer,e)  {
+export function togggleSidebar(e,mainContainer)  {
     if(e){
-
         let hasLiParent = findLi(e.target);
-        console.log(hasLiParent)
         if(hasLiParent){
             return
         }
     } 
-
-        
-        mainContainer?.classList.toggle('collapsed');    
-    
+    mainContainer?.classList.toggle('collapsed');       
 }
-
 function findLi(parent){
     if(parent.tagName === 'LI'){
         return true

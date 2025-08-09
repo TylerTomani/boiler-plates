@@ -14,7 +14,11 @@ let sideBarFocused = false;
         // Handle Enter and Space keys for toggling sidebar
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault(); // Prevent default action for Enter/Space
-            togggleSidebar(mainContainer,e);
+            console.log(e.target)
+            togggleSidebar(e,mainContainer);
+               if (el === sideBarBtn) {
+                e.stopPropagation();
+            }
         }
         if (e.key === 'Escape') { // Close sidebar on Escape key
             if (!sideBar.classList.contains('collapsed')) {
@@ -25,7 +29,7 @@ let sideBarFocused = false;
     el.addEventListener('click', e =>{
         e.preventDefault(); // Prevent default action
         e.stopPropagation()
-        togggleSidebar(mainContainer,e)
+        togggleSidebar(e,mainContainer)
     });
 })
 
