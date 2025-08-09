@@ -11,8 +11,8 @@ document.addEventListener('touchend', (e) => {
     endX = e.changedTouches[0].clientX;
     const swipeDistance = endX - startX;
 
-    if (swipeDistance < -50 && !sidebar.classList.contains('hidden')) {
-        sidebar.classList.toggle('hidden');
+    if (swipeDistance < -50 && !sideBar.classList.contains('hidden')) {
+        sideBar.classList.toggle('hidden');
     }
 });
 function getSideBar(parent) {
