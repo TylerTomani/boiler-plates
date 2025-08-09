@@ -37,7 +37,7 @@
 .dark-mode .section-container>.section {
     color: var(--font-primary-db);
 }
-.dark-mode a:active, .dark-mode a:focus {
+.dark-mode header a:active, .dark-mode header a:focus {
     color: darkblue
 }
 .dark-mode a {
