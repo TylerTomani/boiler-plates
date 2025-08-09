@@ -70,9 +70,10 @@
 }
 
 .page-header .header-logo-actions {
-  /* flex-basis: 10%; */
-  /* display: flex; */
-  /* flex-direction: column; */
+    border-bottom: 1px solid black;
+    /* flex-basis: 10%; */
+    /* display: flex; */
+    /* flex-direction: column; */
   /* /* align-items: flex-end; align right */
   /* border: 1px solid green; */
 }
