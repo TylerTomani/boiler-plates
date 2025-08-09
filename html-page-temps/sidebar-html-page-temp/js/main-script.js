@@ -8,23 +8,24 @@ export const sideBarBtn = document.querySelector('#sideBarBtn');
 export const navLessonTitle = document.querySelector('#navLessonTitle');
 let sideBarFocused = false;
 
-sideBarBtn.addEventListener('click', e =>{
-    e.preventDefault(); // Prevent default action
-    togggleSidebar(mainContainer)
-});
+
 [navLessonTitle,sideBarBtn].forEach(el => {
     el.addEventListener('keydown', (e) => {
-    // Handle Enter and Space keys for toggling sidebar
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault(); // Prevent default action for Enter/Space
-        togggleSidebar(mainContainer);
-    }
-    if (e.key === 'Escape') { // Close sidebar on Escape key
-        if (!sideBar.classList.contains('collapsed')) {
-        togggleSidebar(mainContainer);
+        // Handle Enter and Space keys for toggling sidebar
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent default action for Enter/Space
+            togggleSidebar(mainContainer,e);
         }
-    }
+        if (e.key === 'Escape') { // Close sidebar on Escape key
+            if (!sideBar.classList.contains('collapsed')) {
+            togggleSidebar(mainContainer,e);
+            }
+        }
     })
+    el.addEventListener('click', e =>{
+        e.preventDefault(); // Prevent default action
+        togggleSidebar(mainContainer,e)
+    });
 })
 
 sideBar.addEventListener('focusin', () => {
