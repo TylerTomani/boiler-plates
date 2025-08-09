@@ -1,0 +1,8 @@
+#sideBarBtn {
+    padding: 1%;
+    border: 1px solid black;
+    font-size: 1.4rem;
+    /* width: 10%; */
+    color: var(--text-color);
+
+}

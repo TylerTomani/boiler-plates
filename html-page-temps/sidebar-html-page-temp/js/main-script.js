@@ -1,15 +1,18 @@
-// import { injectContent } from "./inject-content";
-import { injectContent, mainTargetDiv } from "./inject-content.js";
-import { letterFocus } from "./letterFocus-side-bar-temp.js";
+import { injectContent } from "./inject-content.js";
+import { keyboardFocusSidebar } from "./keyboardFocusSidebar.js";
 
+export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 const sideBarLinks = document.querySelectorAll('.side-bar-links-ul li a');
-addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Attach link click events
     sideBarLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            const href = link.getAttribute('href');
-            injectContent(href);
-            letterFocus();
-        })
-    })
-})
+            injectContent(link.getAttribute('href'));
+        });
+    });
+
+    // Initialize keyboard focus navigation ONCE
+    keyboardFocusSidebar();
+});
