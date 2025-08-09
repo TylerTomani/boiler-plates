@@ -1,7 +1,7 @@
 import { mainTargetDiv } from "./main-script.js";
 import { numFocus } from "./numFocus.js";
 let sideBarFocused = false
-export function letterFocus() {
+export function letterFocus(e,key) {
     // Prevent multiple listeners
     if (window._keyboardFocusSidebarInitialized) return;
     window._keyboardFocusSidebarInitialized = true;

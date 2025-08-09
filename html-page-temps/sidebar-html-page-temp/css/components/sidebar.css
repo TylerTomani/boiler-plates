@@ -30,6 +30,7 @@ main.main-container {
   padding: 1rem;
   overflow-y: auto;
   transition: width 0.1s ease;
+
 }
 
 /* When collapsed */
@@ -37,10 +38,17 @@ main.main-container.collapsed .side-bar {
     width: var(--sidebar-collapsed-width);
     min-width: var(--sidebar-collapsed-width);
 }
-main.main-container.collapsed .side-bar .parts{
+main.main-container.collapsed .side-bar .side-bar-links-container{
     display: none;
 }
 
 main.main-container.collapsed .main-content-container {
   width: calc(100% - var(--sidebar-collapsed-width));
+}
+main.main-container.collapsed #sideBarBtn {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  /* left: 10px; */
+  /* font-size: 24px; */
 }
