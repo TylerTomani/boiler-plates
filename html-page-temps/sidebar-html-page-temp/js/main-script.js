@@ -1,6 +1,7 @@
 import { injectContent } from "./inject-content.js";
 import { keyboardFocusSidebar } from "./keyboardFocusSidebar.js";
 import { togggleSidebar } from "./components/toggle-sidebar.js";
+import { dragHideSidebar } from "./components/drag-hide-sidebar.js";
 export const mainContainer = document.querySelector('.main-container');
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const sideBar = document.querySelector('.side-bar');
@@ -16,7 +17,10 @@ let sideBarFocused = false;
             e.preventDefault(); // Prevent default action for Enter/Space
             console.log(e.target)
             togggleSidebar(e,mainContainer);
-               if (el === sideBarBtn) {
+            if (el === sideBarBtn) {
+                e.stopPropagation();
+            }
+            if (el === navLessonTitle) {
                 e.stopPropagation();
             }
         }
@@ -59,4 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize keyboard focus navigation ONCE
     keyboardFocusSidebar();
     togggleSidebar()
+    dragHideSidebar
 });
