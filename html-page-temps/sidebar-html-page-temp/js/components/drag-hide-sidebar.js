@@ -12,7 +12,6 @@ export function dragHideSidebar(mainContainer, sideBar) {
 
         if (swipeDistance < -50 && !sideBar.classList.contains('collapsed')) {
             mainContainer.classList.toggle('collapsed');
-            // alert('Sidebar hidden');
         }
         if (swipeDistance > 50 && sideBar.classList.contains('hidden')) {
            mainContainer.classList.toggle('hidden');
