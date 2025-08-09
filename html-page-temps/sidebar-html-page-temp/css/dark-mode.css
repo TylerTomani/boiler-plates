@@ -47,9 +47,9 @@
 h4 .dark-mode p {
     color: whitesmoke;
 }
-.dark-mode #nav-section-lesson-titles {
-    border-top: 1px solid whitesmoke;
-    border-bottom: 1px solid whitesmoke;
+.dark-mode #navLessonTitle {
+    /* border-top: 1px solid whitesmoke; */
+    /* border-bottom: 1px solid whitesmoke; */
     background-color: var(--bg-primary)
 
 }
@@ -57,4 +57,9 @@ h4 .dark-mode p {
 .dark-mode .code-container>.copy-code {
     background-color: var(--bg-primary);
     color: white;
+}
+
+.dark-mode .page-header .header-nav > .home-links > a,
+.dark-mode .page-header .header-nav > .web-links  > a{
+    border: 1px solid whitesmoke
 }

@@ -1,5 +1,6 @@
 import { injectContent } from "./inject-content.js";
 import { keyboardFocusSidebar } from "./keyboardFocusSidebar.js";
+import { letterFocus } from "./letterFocus.js";
 import { togggleSidebar } from "./components/toggle-sidebar.js";
 import { dragHideSidebar } from "./components/drag-hide-sidebar.js";
 export const mainContainer = document.querySelector('.main-container');
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize keyboard focus navigation ONCE
     keyboardFocusSidebar();
+    letterFocus()
     togggleSidebar()
     dragHideSidebar(mainContainer,sideBar)
 });

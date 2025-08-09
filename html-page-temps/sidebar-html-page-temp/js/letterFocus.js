@@ -4,6 +4,7 @@ import {isSideBarFocused} from "./main-script.js";
 import { sideBarLinks } from "./numFocus.js";
 let sideBarFocused = false
 let iSideBarLinks = 0
+let lastFocusedSideBarLink = null;
 export function letterFocus(e,key) {
     // Prevent multiple listeners
     if (window._keyboardFocusSidebarInitialized) return;
@@ -21,7 +22,12 @@ export function letterFocus(e,key) {
         }
 
         // fallback specific label for sideBarBtn so icon-only still matches 's'
-        if (!text && el.id === 'sideBarBtn') text = 'sidebar';
+        if (!text && el.id === 'sideBarBtn'){
+            text = 'sidebar';
+            if(!lastFocusedSideBarLink){
+                iSideBarLinks = -1
+            }
+        } 
         if (el.id === 'navLessonTitle') text = 'navLessonTitle';
 
         // collapse whitespace
@@ -59,7 +65,7 @@ export function letterFocus(e,key) {
         });
 
         
-        console.log(iSideBarLinks)
+        console.log(isSideBarFocused())
         if(isSideBarFocused() && key === 'a') {
             if(e.shiftKey){
                 // Focus the first sidebar link
