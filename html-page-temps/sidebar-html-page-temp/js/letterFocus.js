@@ -101,13 +101,26 @@ export function letterFocus() {
     const activeIsSidebarLink = sideBarLinks.includes(active);
 
     // If sidebar focused but focus NOT on sidebar link (e.g., sidebar button)
-    if (sideBarFocused && !activeIsSidebarLink) {
-      if (key === 'a' || key === 'f') {
-        e.preventDefault();
-        focusLastSidebarLink();
-        return;
-      }
+    // If sidebar focused but focus NOT on sidebar link (e.g., sidebar button)
+if (sideBarFocused && !activeIsSidebarLink) {
+  if (key === 'a') {
+    e.preventDefault();
+    if (lastClickedSideBarLink) {
+      lastClickedSideBarLink.focus();
+      iSideBarLinks = sideBarLinks.indexOf(lastClickedSideBarLink);
     }
+    return;
+  }
+  if (key === 'f') {
+    e.preventDefault();
+    if (lastFocusedSideBarLink) {
+      lastFocusedSideBarLink.focus();
+      iSideBarLinks = sideBarLinks.indexOf(lastFocusedSideBarLink);
+    }
+    return;
+  }
+}
+
 
     // If sidebar NOT focused — 'a' or 'f' focuses last sidebar link
     if (!sideBarFocused) {
