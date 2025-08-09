@@ -12,11 +12,11 @@ export function dragHideSidebar(mainContainer, sideBar) {
 
         if (swipeDistance < -50 && !sideBar.classList.contains('collapsed')) {
             mainContainer.classList.toggle('collapsed');
-            alert('Sidebar hidden');
+            // alert('Sidebar hidden');
         }
-        // if (swipeDistance > 50 && sideBar.classList.contains('hidden')) {
-        //    mainContainer.classList.toggle('hidden');
-        // }
+        if (swipeDistance > 50 && sideBar.classList.contains('hidden')) {
+           mainContainer.classList.toggle('hidden');
+        }
     });
     // sideBar.addEventListener('mousedown', (e) => {
     //     startX = e.changedTouches[0].clientX;

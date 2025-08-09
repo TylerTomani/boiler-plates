@@ -66,14 +66,14 @@ export function letterFocus(e,key) {
 
         
         console.log(isSideBarFocused())
-        if(isSideBarFocused() && key === 'a') {
-            if(e.shiftKey){
+        if(isSideBarFocused() ) {
+            if((e.shiftKey && key === 'f') || key == 'a'){
                 // Focus the first sidebar link
                 iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length; // Cycle backwards
-            } else {
+            } else if (key === 'f') {
                 iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length; // Cycle through links
                 // Focus the last sidebar link
-            }
+            } 
             sideBarLinks[iSideBarLinks]?.focus();
             return;
         }

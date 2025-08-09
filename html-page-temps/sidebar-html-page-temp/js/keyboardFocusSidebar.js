@@ -1,6 +1,6 @@
 import { numFocus } from './numFocus.js';
 import { letterFocus } from './letterFocus.js';
-const sideBar = document.querySelector('.side-bar');
+import { sideBar } from './main-script.js';
 export function keyboardFocusSidebar() {
     document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;

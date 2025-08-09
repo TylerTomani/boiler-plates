@@ -7,7 +7,7 @@
 .page-header {
   display: flex;
   
-  border: 1px solid red; /* debug */
+  /* border: 1px solid red; debug */
 }
 
 /* Keep header-nav and logo actions as before */
