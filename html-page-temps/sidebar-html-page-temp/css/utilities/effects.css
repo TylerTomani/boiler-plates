@@ -1,5 +1,5 @@
 :root{
-    --highlight-color: darkcyan;
+    --highlight-color: rgb(0, 139, 79);
 }
 .header-nav a:focus,.header-nav a:hover,.header-nav a:active{
     /* color: var(--highlight-color); */

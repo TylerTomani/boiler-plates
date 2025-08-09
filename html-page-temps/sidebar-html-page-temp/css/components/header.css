@@ -16,23 +16,41 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* flex-grow: 1; */
+  flex-grow: 1;
 }
 
 .page-header > .header-top-row > .header-nav {
     width: 100%;
-    flex-grow: 1;
     display: flex;
-    height: 100%;
-    flex-direction: column;
+    flex-grow: 1;
+    /* flex-direction: column; */
+}
+#navLessonTitle {
+    border: 1px solid black;
+  flex-basis: 36%;  /* same as home-links (90% * 40%) */
+  order: 99; /* make sure it's below the other flex items */
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+
+}
+
+/* You can adjust width by using max-width if needed */
+#navLessonTitle .nav-lesson {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .page-header .header-nav > .home-links,
 .page-header .header-nav > .web-links {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
+    height: 100%;
+    flex-basis: 50%;
+    flex-grow: 1;
     /* justify-content: space-evenly; */
     /* align-items: center; */
-    flex-grow: 1;
+
     /* justify-content: center; */
 }
 
@@ -40,12 +58,15 @@
 .page-header .header-nav > .web-links  > a{
     /* flex-basis: 60%; */
     display: inline-flex;
-    width: 100%;
+    /* width: 100%; */
     align-items: center;
     justify-content: center;
-    border: 1px solid blue; 
+    border: 1px solid black;
+    text-decoration: none;
+    height: 100%;
   /* display: flex; */
-  /* flex-direction: column; */
+    flex-grow: 1;
+  flex-direction: column;
 }
 
 .page-header .header-logo-actions {
@@ -57,18 +78,7 @@
 }
 
 /* New: navLessonTitle below header-nav and logo */
-#navLessonTitle {
-  flex-basis: 36%;  /* same as home-links (90% * 40%) */
-  order: 99; /* make sure it's below the other flex items */
-  margin-top: 0.5rem;
-}
 
-/* You can adjust width by using max-width if needed */
-#navLessonTitle .nav-lesson {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 
 .page-header .header-logo-actions > a#tutorialLink{

@@ -63,3 +63,5 @@ h4 .dark-mode p {
 .dark-mode .page-header .header-nav > .web-links  > a{
     border: 1px solid whitesmoke
 }
+.dark-mode #navLessonTitle {
+    border: 1px solid white;}

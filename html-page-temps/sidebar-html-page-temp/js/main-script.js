@@ -59,6 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             injectContent(link.getAttribute('href'));
         });
+        link.addEventListener('keydown', (e) => {
+            let key = e.key
+            if(key === 'Enter' || key === ' '){
+                e.preventDefault();
+                e.stopPropagation();
+                injectContent(link.getAttribute('href'));
+            }
+        });
     });
 
     // Initialize keyboard focus navigation ONCE
