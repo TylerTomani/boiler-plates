@@ -1,20 +1,12 @@
-export function togggleSidebar(e,mainContainer)  {
-    if(e){
-        console.log(e.target)
-        let hasLiParent = findLi(e.target);
-        if(hasLiParent){
-            return
-        }
-    } 
-    mainContainer?.classList.toggle('collapsed');       
-}
-function findLi(parent){
-    if(parent.tagName === 'LI'){
-        console.log(parent)
-        return true
-    } else if (parent.parentElement){
-        return findLi(parent.parentElement)
-    } else {
-        return null
+// js/components/toggle-sidebar.js
+export function togggleSidebar(e, mainContainer) {
+  if (e && e.target) {
+    let node = e.target;
+    while (node) {
+      if (node.tagName === 'LI') return; // ignore toggling if click was inside a link list item
+      node = node.parentElement;
     }
+  }
+  mainContainer?.classList.toggle('collapsed');
 }
+    

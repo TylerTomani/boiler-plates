@@ -7,13 +7,24 @@ import { sideBarLinks } from "./numFocus.js";
 let iSideBarLinks = -1
 let lastFocusedSideBarLink = null;
 let lastClickedSideBarLink = null;
-let sideBarLinksFocused = false
+let sideBarLinksFocused = true
+// <-- ADD THIS INIT CODE HERE -->
+window.addEventListener('DOMContentLoaded', () => {
+  const focusedEl = document.activeElement;
+  if (
+    (focusedEl === sideBarBtn || sideBar.contains(focusedEl)) &&
+    !lastFocusedSideBarLink
+  ) {
+    lastFocusedSideBarLink = sideBarLinks[0];
+    iSideBarLinks = 0;
+  }
+});
 export function letterFocus(e,key) {
     // Prevent multiple listeners
     if (window._keyboardFocusSidebarInitialized) return;
     window._keyboardFocusSidebarInitialized = true;
     let sideBarFocused = isSideBarFocused()
-    console.log(sideBarFocused)
+    
     // Normalize and get text used for matching
     function normalizeName(el) {
         let text = (el.innerText || '').trim().toLowerCase();
@@ -48,9 +59,10 @@ export function letterFocus(e,key) {
     }
     if(sideBarBtn.hasAttribute('autofocus') ){
         sideBarFocused = true
-
+        console.log(sideBarFocused)
     }
-    sideBarBtn.addEventListener('focusin', (e) => {
+    sideBarBtn.addEventListener('focus', (e) => {
+        sideBarFocused = true
         if(lastFocusedSideBarLink){
             // lastFocusedSideBarLink = null;
             iSideBarLinks = -1
