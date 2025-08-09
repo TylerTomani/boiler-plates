@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize keyboard focus navigation ONCE
     keyboardFocusSidebar();
     togggleSidebar()
-    dragHideSidebar
+    dragHideSidebar(mainContainer,sideBar)
 });
