@@ -85,64 +85,46 @@ export function letterFocus(e,key) {
             }
         });
     })
- document.addEventListener('keydown', function (e) {
-    // ignore typing in inputs/textareas
-    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    document.addEventListener('keydown', function (e) {
+        // ignore typing in inputs/textareas
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 
-    const key = (e.key || '').toLowerCase();
-    if (key.length !== 1 || !/^[a-z0-9]$/.test(key)) return;
+        const key = (e.key || '').toLowerCase();
+        if (key.length !== 1 || !/^[a-z0-9]$/.test(key)) return;
 
-    // Check sidebar focus state each time
-    let sideBarFocused = isSideBarFocused();
+        // Collect all candidate elements (anchors, buttons, any tabindex, or elements with id)
+        const allEls = [...document.querySelectorAll('a, button, [tabindex], [id]')].filter(el => {
+            // ignore explicit tabindex="-1"
+            const t = el.getAttribute && el.getAttribute('tabindex');
+            if (t === '-1') return false;
 
-    // Handle when sidebar is not focused
-    if (!sideBarFocused) {
-        if (key === 'a') {
-            if (lastClickedSideBarLink) {
-                lastClickedSideBarLink.focus();
+            // always include sideBarBtn even if bounding rect is weird
+            if (el.id === 'sideBarBtn') return true;
+            if (el.id === 'navLessonTitle') return true;
+            if (el.id === 'mainTargetDiv') return true;
+
+            const rect = el.getBoundingClientRect();
+            return el.offsetParent !== null && rect.width > 0 && rect.height > 0;
+        });
+
+        if(sideBarFocused && key === 'f') {
+            if(e.shiftKey)  {
+                // Focus the first sidebar link
+                iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length; // Cycle backwards
             } else {
-                lastFocusedSideBarLink?.focus()
-            }
-            return;
-        }
-        if (key === 'f') {
-            if (lastFocusedSideBarLink) {
-                lastFocusedSideBarLink.focus();
-            }
-            return;
-        }
-    }
-
-    // Collect all candidate elements
-    const allEls = [...document.querySelectorAll('a, button, [tabindex], [id]')].filter(el => {
-        const t = el.getAttribute && el.getAttribute('tabindex');
-        if (t === '-1') return false;
-        if (el.id === 'sideBarBtn' || el.id === 'navLessonTitle' || el.id === 'mainTargetDiv') return true;
-
-        const rect = el.getBoundingClientRect();
-        return el.offsetParent !== null && rect.width > 0 && rect.height > 0;
-    });
-
-    if (sideBarFocused) {
-        if (key === 'f') {
-            if (e.shiftKey) {
-                iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length;
-            } else {
-                iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length;
+                iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length; // Cycle through links
+                // Focus the last sidebar link
             }
             sideBarLinks[iSideBarLinks]?.focus();
             return;
         }
-        if (key === 'a') {
-            iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length;
-            sideBarLinks[iSideBarLinks]?.focus();
-            return;
+        if(key === 'a') {
+            if(sideBarFocused ){
+                iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length; // Cycle backwards
+                sideBarLinks[iSideBarLinks]?.focus();
+                return;
+            }
         }
-    }
-
-    // ... keep your existing matching logic here ...
-
-
         // -------------------
         // Match elements
         // -------------------
