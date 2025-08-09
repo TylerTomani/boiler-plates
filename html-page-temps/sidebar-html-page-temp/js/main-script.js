@@ -55,6 +55,9 @@ const sideBarLinks = document.querySelectorAll('.side-bar-links-ul li a');
 document.addEventListener('DOMContentLoaded', () => {
     // Attach link click events
     sideBarLinks.forEach(link => {
+        if(link.hasAttribute('autofocus')){
+            injectContent(link.href)
+        }
         link.addEventListener('click', (e) => {
             e.preventDefault();
             injectContent(link.getAttribute('href'));

@@ -148,10 +148,10 @@ video.enlarge-vid {
     .step-txt {
         font-size: 90%;
     }
-    #targetDiv{
+    /* #targetDiv{
         padding-bottom: 15%;
         margin-bottom: 15%;
-    }   
+    }    */
     img.enlarge {
         position: absolute;
         z-index: 10;
