@@ -8,7 +8,8 @@ export function togggleSidebar(e,mainContainer)  {
     mainContainer?.classList.toggle('collapsed');       
 }
 function findLi(parent){
-    if(parent.tagName === 'LI'){
+    if(parent.tagName === 'LI' || parent.tagName === 'NAV' ){
+        console.log(parent)
         return true
     } else if (parent.parentElement){
         return findLi(parent.parentElement)
