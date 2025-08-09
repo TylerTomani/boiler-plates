@@ -1,0 +1,60 @@
+:root {
+    --bg-primary-db: #201d1d;
+    --font-primary-db: whitesmoke;
+}
+.dark-mode .page-header .header-nav{
+    border: 1px solid whitesmoke;
+}
+.dark-mode {
+    background-color: var(--bg-primary-db);
+    color: var(--font-primary-db)
+}
+.dark-mode .step:active, .dark-mode .step:focus,
+.dark-mode .step-float:active, .step-float:focus {
+    font-style: bold;
+    /* background-color: blue; */
+    font-weight: 800;
+    /* color: white; */
+}
+.dark-mode #mainLinksContainer{
+    color: var(--font-primary-db);
+    background-color: var(--bg-primary);
+}
+.dark-mode >nav.section-lesson-title {
+    background-color: var(--bg-primary-db);
+}
+.dark-mode >nav.section-lesson-title>h1#title {
+    color: white;
+    
+}
+.dark-mode #partsTxt {
+    color: white;
+}
+.dark-mode main>aside.side-bar {
+    border-right: 1px solid whitesmoke;
+    background-color: var(--bg-primary);
+}
+.dark-mode .section-container>.section {
+    color: var(--font-primary-db);
+}
+.dark-mode a:active, .dark-mode a:focus {
+    color: darkblue
+}
+.dark-mode a {
+    color: white;
+}
+.dark-mode,
+h4 .dark-mode p {
+    color: whitesmoke;
+}
+.dark-mode #nav-section-lesson-titles {
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    background-color: var(--bg-primary)
+
+}
+.dark-mode .code-container,
+.dark-mode .code-container>.copy-code {
+    background-color: var(--bg-primary);
+    color: white;
+}
