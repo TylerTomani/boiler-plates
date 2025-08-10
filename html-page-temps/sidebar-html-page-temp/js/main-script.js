@@ -4,11 +4,27 @@ import { letterFocus } from "./letterFocus.js";
 import { togggleSidebar } from "./components/toggle-sidebar.js";
 import { dragHideSidebar } from "./components/drag-hide-sidebar.js";
 export const mainContainer = document.querySelector('.main-container');
-export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const sideBar = document.querySelector('.side-bar');
 export const sideBarBtn = document.querySelector('#sideBarBtn');
 export const navLessonTitle = document.querySelector('#navLessonTitle');
 let sideBarFocused = false;
+
+
+import { initNumFocus, numFocus } from "./numFocus.js";
+
+export const mainTargetDiv = document.querySelector('#mainTargetDiv');
+
+// Initialize numFocus tracking
+initNumFocus(mainTargetDiv);
+
+// Example usage on keydown
+document.addEventListener('keydown', (e) => {
+    if (e.key >= '0' && e.key <= '9') {
+        numFocus(e.key, e);
+    }
+});
+
+
 
 
 [navLessonTitle,sideBarBtn,sideBar].forEach(el => {

@@ -2,15 +2,10 @@
     /* Sidebar */
     .side-bar {
         width: var(--sidebar-width);
+        overflow-x: scroll;
     }   
     .side-bar-links-ul {
-        overflow-x: scroll;
-        text-wrap: wrap;
-        white-space: wrap;
         font-size: 90%;
     }
-    .side-bar-links-ul li {
-    }
-    .side-bar-links-ul li a{ 
-    }
+    
 }

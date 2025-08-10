@@ -30,6 +30,7 @@ main.main-container {
 .main-content-container {
   width: var(--main-content-width);
   /* padding: 1rem; */
+  
   overflow-y: auto;
   transition: width 0.1s ease;
 

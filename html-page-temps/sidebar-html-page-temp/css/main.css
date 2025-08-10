@@ -5,6 +5,7 @@
 @import url('components/sidebar.css');
 /* Utilities */
 @import url('utilities/effects.css');
+@import url('utilities/layout.css');
 @import url('utilities/spacing.css');
 *{
     margin: 0;
