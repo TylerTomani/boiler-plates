@@ -1,13 +1,16 @@
 export const sideBarLinks = [...document.querySelectorAll('.side-bar-links-ul > li > a')];
 let mainTargetDivFocused = false;
-
+import { stepTxtsFocus } from "./components/stepTxts.js";
 export function initNumFocus(mainTargetDiv) {
     mainTargetDiv.addEventListener('focus', () => mainTargetDivFocused = true);
     mainTargetDiv.addEventListener('blur', () => mainTargetDivFocused = false);
 }
 
 export function numFocus(key, e) {
-    if (mainTargetDivFocused) return;
+    if (mainTargetDivFocused) {
+        stepTxtsFocus(e)
+        return 
+    };
 
     e.preventDefault();
     e.stopPropagation();

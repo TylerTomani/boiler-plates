@@ -22,7 +22,7 @@ and comment out and see sidebar hidden difference
 // export let lastStep = null
 // export let stepFocused
 export function stepTxtsFocus(e) {
-    console.log(e.target)
+    console.log(e)
     // const videos = document.querySelectorAll('video');
     // const allVideos = document.querySelectorAll('video')
     // let currentVideo
