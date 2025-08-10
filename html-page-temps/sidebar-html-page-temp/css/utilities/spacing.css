@@ -7,8 +7,12 @@
 }
 
 /* Lessons */
-.steps-container{
+.main-container.collapsed .steps-container{
   margin: 0 1%;
+}
+.steps-container{
+  margin-left: 5%;
+
 }
 .step-float{
     padding-bottom: 5%;
