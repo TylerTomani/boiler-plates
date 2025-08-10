@@ -1,13 +1,14 @@
 /* overflow-x: scroll; */
-.min-half {
-    min-width: 50px !important;
+#targetDiv{
+    width: 100%;
 }
+
 .header-codeColor-lesson {
-    padding-left: 2.5%;
+    /* padding-left: 2.5%; */
 }
 .step-container{
-    position: relative;
-    z-index: 0;
+    /* position: relative; */
+    /* z-index: 0; */
 }
 
 .step {

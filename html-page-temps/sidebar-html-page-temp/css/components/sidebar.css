@@ -9,6 +9,7 @@
 main.main-container {
   display: flex;
   flex: 1;
+  width: 100vmax;
   height: 100%;
   overflow: hidden;
 }
@@ -28,7 +29,7 @@ main.main-container {
 /* Main content */
 .main-content-container {
   width: var(--main-content-width);
-  padding: 1rem;
+  /* padding: 1rem; */
   overflow-y: auto;
   transition: width 0.1s ease;
 
