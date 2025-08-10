@@ -1,8 +1,16 @@
 #sideBarBtn {
     padding: 1%;
-    border: 1px solid black;
-    font-size: 1.4rem;
-    /* width: 10%; */
-    color: var(--text-color);
+}
 
+.code-container {
+  margin-top: 2.5%;
+}
+
+/* Lessons */
+.step-float{
+    padding-bottom: 5%;
+}
+
+.step > .step-txt{
+    /* padding: 1%; */
 }

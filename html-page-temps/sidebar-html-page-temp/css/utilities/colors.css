@@ -1,0 +1,11 @@
+#sideBarBtn {
+    color: var(--text-color);
+}
+/* Lessons */
+.code-container {
+    background-color: white;
+}
+.step .code-container .copy-code{
+    background-color: lightgreen;
+    border: 1px solid blue;
+}

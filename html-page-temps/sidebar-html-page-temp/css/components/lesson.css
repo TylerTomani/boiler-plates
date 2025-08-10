@@ -1,30 +1,6 @@
-/* overflow-x: scroll; */
 #targetDiv{
     width: 100%;
     overflow-x: hidden;
-}
-
-.header-codeColor-lesson {
-    /* padding-left: 2.5%; */
-}
-.step-container{
-    /* position: relative; */
-    /* z-index: 0; */
-}
-
-.step {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* .step, */
-.step-float:focus,.step-float:focus{
-    background-color: var(--bg-primary-db);
-    z-index: 100;
-}
-.step-float{
-    position: relative;
-    padding-bottom: 5%;
 }
 .step-img,
 .step-vid {
@@ -77,14 +53,9 @@ video.enlarge-vid {
 .imgs-container .img-container .step-img {
     width: 90%;
 }
-.step:active,.step:focus, 
-.step-float:active,.step-float:focus{
-    font-style: bold;
-}
 
-.step > .step-txt{
-    padding: 1%;
-}
+
+
 .step-float > .step-txt{
     padding: 0 2%;
 }
@@ -108,27 +79,10 @@ video.enlarge-vid {
     border: 2px solid red;
     margin-left: 2.5%;
 }
-.code-container {
-    background-color: white;
-    width: fit-content;
-    margin-top: 2.5%;
-    min-width: 400px;
-}
-.code-container>.copy-code {
-    color: white;
-    position: relative;
-    /* ADD THIS */
-    border-radius: 8px;
-    width: 100%;
-    z-index: 5;
-    background-color: var(--bg-primary);
-    width: 100%;
-    padding: 1.5% 5% 2% 1.2%;
-}
+
 .clear {
     clear: both;
 }
-
 .step-float>.step-vid>video  {
     z-index: 0;
 }

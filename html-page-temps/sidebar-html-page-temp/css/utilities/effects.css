@@ -8,4 +8,14 @@
     text-decoration: underline;
     text-underline-offset: 4px;
 }   
- 
+ /* Main content */
+.main-content-container {
+  transition: width 0.1s ease;
+}
+
+
+/* Lessons */
+.step:active,.step:focus, 
+.step-float:active,.step-float:focus{
+    font-style: bold;
+}

@@ -11,9 +11,9 @@
 }
 .dark-mode .step:active, .dark-mode .step:focus,
 .dark-mode .step-float:active, .step-float:focus {
-    font-style: bold;
+    /* font-style: bold; */
     /* background-color: blue; */
-    font-weight: 800;
+    /* font-weight: 800; */
     /* color: white; */
 }
 .dark-mode #mainLinksContainer{
@@ -38,7 +38,7 @@
     color: var(--font-primary-db);
 }
 .dark-mode header a:active, .dark-mode header a:focus {
-    color: darkblue
+    /* color: darkblue */
 }
 .dark-mode a {
     color: white;
@@ -52,6 +52,9 @@ h4 .dark-mode p {
     /* border-bottom: 1px solid whitesmoke; */
     background-color: var(--bg-primary)
 
+}
+.dark-mode .code-container{
+    border: 1px solid white;
 }
 .dark-mode .code-container,
 .dark-mode .code-container>.copy-code {

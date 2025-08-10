@@ -3,10 +3,22 @@
 /* Components */
 @import url('components/header.css');
 @import url('components/sidebar.css');
+@import url('components/lesson.css');
 /* Utilities */
+@import url('utilities/borders.css');
+@import url('utilities/colors.css');
 @import url('utilities/effects.css');
 @import url('utilities/layout.css');
+@import url('utilities/position.css');
+@import url('utilities/sizing.css');
 @import url('utilities/spacing.css');
+@import url('utilities/text.css');
+@import url('utilities/zindex.css');
+:root {
+  --sidebar-width: 10%;
+  --main-content-width: 90%;
+  --sidebar-collapsed-width: 20px;
+}
 *{
     margin: 0;
     padding: 0;
