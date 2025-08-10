@@ -41,7 +41,7 @@ const <span class="lsg">you</span> = <span class="lsg">{</span>
 <span class="lsg">}</span></pre>
                         </div>
                         <div class="code-container ">
-                            <pre tabindex="0" class="copy-code ">
+                            <pre class="copy-code ">
 <span class="lsg">me</span>.talk()
 <span class="lsg">you</span>.talk()</pre>
                         </div>              
@@ -70,7 +70,7 @@ const me = new Person()
 const you = new Person()</pre>
                         </div>
                         <div class="code-container">
-                            <pre tabindex="0" class="copy-code">
+                            <pre class="copy-code">
 me.<span class="b">talk()</span>
 you.<span class="b">talk()</span></pre>
                         </div>
@@ -87,85 +87,41 @@ you.<span class="b">talk()</span></pre>
                 <!-- 03 -->
                 <div tabindex="0" class="step-float">
                     <div class="step-img">
-                        <img src="side-bar-links/01/images/03.png" alt="">
+                        <!-- <img src="images/02.png" alt=""> -->
+                        <img src="side-bar-links/01/images/02.png" alt="">
                     </div>
                     <div class="step-txt">
                         <h4>03</h4>
                         <p>
-                            We can re-assign a new method to the instance of the <code class="b">Person</code>
-                            class, and it will Not change the <code class="b">talk()</code> method within <code class="b">Person</code>
+                            Instead of adding <code class="b">methods</code> to individual objects add the 
+                            <span class="b">method</span> to a class and create instances of that class.
                         </p>
-                    </div>
-                    <div class="step">
-                        <div class="step-txt">
-                            <div class="code-container ">
-                                <pre tabindex="0" class="copy-code ">
-class Person{
-    talk(){
-        return 'Talking'
+                        <div class="code-container ">
+                                <pre class="copy-code">
+class <span class="b">Person</span> {
+    <span class="b">talk()</span>{
+        return 'talking'
     }
 }
 const me = new Person()
-function newMethod(){
-    return 'new Method'
-}
-me.talk = newMethod()
-me.talk
-</pre>
-                            </div>
-                            <div class="code-container">
-                                <pre tabindex="0" class="copy-code">
-Person</pre></div>
-
+const you = new Person()</pre>
+                        </div>
+                        <div class="code-container">
+                            <pre class="copy-code">
+me.<span class="b">talk()</span>
+you.<span class="b">talk()</span></pre>
                         </div>
                         
-                    </div>
-                </div>
-                <!-- 04 -->
-                <div tabindex="0" class="step-float br1">
-                    <div class="step-img">
-                        <img src="side-bar-links/01/images/04.png" alt="">
                     </div>
                     <div class="step-txt">
-                        <h4>04</h4>
                         <p>
-                            <span class="r">Remember</span> that including <code class="">()</code> after a function when assigning
-                            it to a variable will only asign the <strong>Return Value</strong>, if you do that you can not invoke the 
-                            method on the instance of the class because me.<span class="b">talk</span> will only have the 
-                            return value <code>'new Method'</code> from the <code>newMethod</code>  function.
-                            so invoking the <code><span class="b">talk</span><span class="r">()</span></code> method on 
-                            the <code class="b">me</code> instance with <code class="r">()</code> will throw an error
+                            Now the method <strong>"inherits"</strong> from the <code class="b">talk()</code>
+                            method from the  <code class="b">Person</code>
+                            class
                         </p>
                     </div>
-                    <div class="step">
-                        <div class="step-txt">
-                            <div class="code-container ">
-                                <pre tabindex="0" class="copy-code ">
-class Person{
-    talk(){
-        return 'Talking'
-    }
-}
-const me = new Person()
-function newMethod(){
-    return 'new Method'
-}
-me.talk = newMethod
-me.talk()
-</pre>
-                            </div>
-                            <div class="code-container">
-                                <pre tabindex="0" class="copy-code">
-me.talk = newMethod()
-me.talk<span class="r">()</span><pre>
-                            </div>
-                            
-
-
-                        </div>
-                        
-                    </div>
                 </div>
+                
                 <!-- 05 imgs-container -->
                 <div tabindex="0" class="step-float br1">
                     <div class="step-txt">
@@ -208,7 +164,7 @@ me.talk<span class="r">()</span><pre>
                             the <code class="m">[[Protoype]]</code> of it's parent class <code class="b">Person</code>.
                         </p>
                         <div class="code-container ">
-                            <pre tabindex="0" class="copy-code ">
+                            <pre class="copy-code ">
 class Person{
 <span class="b">talk()</span>{
     return 'Talking'
@@ -232,7 +188,7 @@ me
                             But we can add attributes to the instance itself
                         </p>
                         <div class="code-container ">
-                            <pre tabindex="0" class="copy-code ">
+                            <pre class="copy-code ">
 class Person{
 talk(){
     return 'Talking'

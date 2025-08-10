@@ -1,4 +1,4 @@
-export const sideBarLinks = [...document.querySelectorAll('.side-bar-links-ul > li > a')];
+export const sideBarLinks = [...document.querySelectorAll('.sidebar-links-ul > li > a')];
 let mainTargetDivFocused = false;
 
 import { stepTxtsFocus } from "./components/stepTxts.js";
@@ -19,8 +19,8 @@ export function initNumFocus(mainTargetDiv) {
     });
       mainTargetDiv.addEventListener('focusout', (e) => {
         // Check if the new focused element is outside mainTargetDiv
+        mainTargetDivFocused = false;
         if (!mainTargetDiv.contains(e.relatedTarget)) {
-            mainTargetDivFocused = false;
             console.log('mainTargetDiv lost focus entirely');
         }
     });

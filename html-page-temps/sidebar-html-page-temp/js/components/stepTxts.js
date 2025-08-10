@@ -1,15 +1,4 @@
-// import { togglePlayVidSize } from "./playPauseVideos-colorCode.js";
-// ⚠️ NOTE: This behavior with sidebar hiding is not fully understood.
-// It works well with step and step-float, so we’re keeping it for now.
-// If bugs pop up later related to sidebar visibility, check here first. 
-/**  
-Search for togglePlayVidSize
-and comment out and see sidebar hidden difference
-*/
 
-/** Page is SO CLOSE, the problem now is imgs-container switching enlarge on side 
- by side .img-container > .step-img > .img
- */
 // import { mainTargetDiv } from "./letterFocus-sidebar.js";
 // import { sideBar } from "./toggle-sidebar.js"
 // import { parts } from "./letterFocus-sidebar.js"
@@ -26,6 +15,18 @@ export function stepTxtsFocus(e) {
     let intLet = parseInt(e.key)
     const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
     const copyCodes = document.querySelectorAll('.copy-code')
+    steps[intLet - 1 ].focus()
+    function addTabIndexes(e) {
+        // const tabEls = e.target.querySelectorAll('.copy-code, textarea')
+        // tabEls.forEach(el => {
+        //     el.setAttribute('tabindex', '0')
+        // })
+    }
+    function removeAllTabIndexes() {
+        copyCodes.forEach(el => {
+            el.setAttribute('tabindex', '-1')
+        })
+    }
     // copyCodes.forEach(el => {
     //     el.addEventListener('keydown', e => {
     //         let letter = e.key.toLowerCase()
@@ -50,38 +51,39 @@ export function stepTxtsFocus(e) {
     //         denlargeAllImages()
     //     })
     // })
-    // steps.forEach(el => {
-    //     el.addEventListener('focus', e => {
-    //         pauseAllVideos()
-    //         removeAllTabIndexes()
-    //         denlargeAllImages()
-    //         lastStep = e.target
-    //     })
-    //     el.addEventListener('click', e => {
-    //         const step = getStep(e.target)
-    //         if (step) {
-    //             if (e.target.tagName == 'IMG') {
-    //                 console.log(e.target)
-    //                 return
-    //             }
-    //             const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
-    //             denlargeAllImages()
-    //         }
-    //     })
 
-    //     el.addEventListener('keydown', e => {
-    //         let letter = e.key.toLowerCase()
-    //         let key = e.keyCode
-    //         if (letter == 'enter') {
-    //             e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    //             toggleImg(e)
-    //             addTabIndexes(e)
-    //             togglePlayVidSize(e)
-    //         }
+    steps.forEach(el => {
+        el.addEventListener('focus', e => {
+            pauseAllVideos()
+            removeAllTabIndexes()
+            denlargeAllImages()
+            lastStep = e.target
+        })
+        el.addEventListener('click', e => {
+            const step = getStep(e.target)
+            if (step) {
+                if (e.target.tagName == 'IMG') {
+                    console.log(e.target)
+                    return
+                }
+                // const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
+                // denlargeAllImages()
+            }
+        })
 
-    //     })
-    // })
-    steps[intLet - 1].focus()
+        el.addEventListener('keydown', e => {
+            let letter = e.key.toLowerCase()
+            let key = e.keyCode
+            if (letter == 'enter') {
+                e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                // toggleImg(e)
+                // addTabIndexes(e)
+                // togglePlayVidSize(e)
+            }
+
+        })
+    })
+    
      
     // const videos = document.querySelectorAll('video');
     // const allVideos = document.querySelectorAll('video')
@@ -195,17 +197,7 @@ export function stepTxtsFocus(e) {
     //     }
     // }
 
-    // function addTabIndexes(e) {
-    //     const tabEls = e.target.querySelectorAll('.copy-code, textarea')
-    //     tabEls.forEach(el => {
-    //         el.setAttribute('tabindex', '0')
-    //     })
-    // }
-    // function removeAllTabIndexes() {
-    //     copyCodes.forEach(el => {
-    //         el.setAttribute('tabindex', '-1')
-    //     })
-    // }
+    
     // function denlargeAllImages() {
     //     imgVids.forEach(el => {
     //         if (el.classList.contains('enlarge')) {
