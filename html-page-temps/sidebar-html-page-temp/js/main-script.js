@@ -17,12 +17,6 @@ export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 // Initialize numFocus tracking
 initNumFocus(mainTargetDiv);
 
-// Example usage on keydown
-document.addEventListener('keydown', (e) => {
-    if (e.key >= '0' && e.key <= '9') {
-        numFocus(e.key, e);
-    }
-});
 
 
 
@@ -70,6 +64,14 @@ const sideBarLinks = document.querySelectorAll('.side-bar-links-ul li a');
 
 document.addEventListener('DOMContentLoaded', () => {
     // Attach link click events
+    const mainTargetDiv = document.querySelector('#mainTargetDiv');
+    initNumFocus(mainTargetDiv);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key >= '0' && e.key <= '9') {
+            numFocus(e.key, e);
+        }
+    });
     sideBarLinks.forEach(link => {
         if(link.hasAttribute('autofocus')){
             injectContent(link.href)

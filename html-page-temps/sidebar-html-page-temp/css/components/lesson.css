@@ -1,6 +1,7 @@
 /* overflow-x: scroll; */
 #targetDiv{
     width: 100%;
+    overflow-x: hidden;
 }
 
 .header-codeColor-lesson {

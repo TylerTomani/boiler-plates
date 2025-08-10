@@ -22,16 +22,75 @@ and comment out and see sidebar hidden difference
 // export let lastStep = null
 // export let stepFocused
 export function stepTxtsFocus(e) {
-    console.log(e)
+    // console.log(e)
+    let intLet = parseInt(e.key)
+    const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
+    const copyCodes = document.querySelectorAll('.copy-code')
+    // copyCodes.forEach(el => {
+    //     el.addEventListener('keydown', e => {
+    //         let letter = e.key.toLowerCase()
+    //         if (letter == 'enter') {
+    //             e.stopPropagation()
+    //             const step = getStep(e.target.parentElement)
+    //             const vid = step.querySelector('video')
+    //             // if(vid){
+    //             //     if(!vid.classList.contains('enlarge-vid')){
+    //             //         // console.log('no class')
+    //             //         // vid.style.zIndex = '0'
+    //             //         // e.target.style.zIndex = '100 !important'
+    //             //         // console.log(e.target)
+
+    //             //     }
+    //             // }
+    //             toggleImg(e)
+    //         }
+    //     })
+    //     el.addEventListener('focus', e => {
+    //         denlargeAllVideos()
+    //         denlargeAllImages()
+    //     })
+    // })
+    // steps.forEach(el => {
+    //     el.addEventListener('focus', e => {
+    //         pauseAllVideos()
+    //         removeAllTabIndexes()
+    //         denlargeAllImages()
+    //         lastStep = e.target
+    //     })
+    //     el.addEventListener('click', e => {
+    //         const step = getStep(e.target)
+    //         if (step) {
+    //             if (e.target.tagName == 'IMG') {
+    //                 console.log(e.target)
+    //                 return
+    //             }
+    //             const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
+    //             denlargeAllImages()
+    //         }
+    //     })
+
+    //     el.addEventListener('keydown', e => {
+    //         let letter = e.key.toLowerCase()
+    //         let key = e.keyCode
+    //         if (letter == 'enter') {
+    //             e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    //             toggleImg(e)
+    //             addTabIndexes(e)
+    //             togglePlayVidSize(e)
+    //         }
+
+    //     })
+    // })
+    steps[intLet - 1].focus()
+     
     // const videos = document.querySelectorAll('video');
     // const allVideos = document.querySelectorAll('video')
     // let currentVideo
     // let isPlaying = false
     // const stepStepVids = document.querySelectorAll('.step-vid')
-    // const steps = document.querySelectorAll('.steps-container > .step ,.steps-container > .step-float , .step-col3')
 
     // // Maybe just keep text area with focus
-    // const copyCodes = document.querySelectorAll('.copy-code')
+    
     // const imgVids = document.querySelectorAll('.step-img > img, .step-vid > video')
     // const allImgs = document.querySelectorAll('.step-img > img')
     // const sectionLessonTitle = document.querySelector('nav.section-lesson-title > h1')
@@ -92,61 +151,7 @@ export function stepTxtsFocus(e) {
     //         }
     //     })
     // })
-    // copyCodes.forEach(el => {
-    //     el.addEventListener('keydown', e => {
-    //         let letter = e.key.toLowerCase()
-    //         if (letter == 'enter') {
-    //             e.stopPropagation()
-    //             const step = getStep(e.target.parentElement)
-    //             const vid = step.querySelector('video')
-    //             // if(vid){
-    //             //     if(!vid.classList.contains('enlarge-vid')){
-    //             //         // console.log('no class')
-    //             //         // vid.style.zIndex = '0'
-    //             //         // e.target.style.zIndex = '100 !important'
-    //             //         // console.log(e.target)
-
-    //             //     }
-    //             // }
-    //             toggleImg(e)
-    //         }
-    //     })
-    //     el.addEventListener('focus', e => {
-    //         denlargeAllVideos()
-    //         denlargeAllImages()
-    //     })
-    // })
-    // steps.forEach(el => {
-    //     el.addEventListener('focus', e => {
-    //         pauseAllVideos()
-    //         removeAllTabIndexes()
-    //         denlargeAllImages()
-    //         lastStep = e.target
-    //     })
-    //     el.addEventListener('click', e => {
-    //         const step = getStep(e.target)
-    //         if (step) {
-    //             if (e.target.tagName == 'IMG') {
-    //                 console.log(e.target)
-    //                 return
-    //             }
-    //             const images = document.querySelectorAll('img') ? document.querySelectorAll('img') : document.querySelectorAll('video')
-    //             denlargeAllImages()
-    //         }
-    //     })
-
-    //     el.addEventListener('keydown', e => {
-    //         let letter = e.key.toLowerCase()
-    //         let key = e.keyCode
-    //         if (letter == 'enter') {
-    //             e.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    //             toggleImg(e)
-    //             addTabIndexes(e)
-    //             togglePlayVidSize(e)
-    //         }
-
-    //     })
-    // })
+    
     // const stepImageIndexes = new WeakMap();
 
     // function toggleImg(e) {
@@ -211,52 +216,7 @@ export function stepTxtsFocus(e) {
     //         }
     //     })
     // }
-    // addEventListener('keydown', e => {
-    //     let letter = e.key.toLowerCase()
-    //     if (e.metaKey && letter == 'c') {
-    //         e.preventDefault()
-    //         return
-    //     }
-    //     if (letter == 'm') {
-    //         if (lastStep) {
-    //             lastStep.focus()
-    //         }
-    //         if (e.target == lastStep) {
-    //             mainTargetDiv.focus()
-    //             window.scrollTo(0, 0)
-    //         }
-    //     }
-    //     if (!e.metaKey && (e.shiftKey && letter == 'c')) {
-    //         // e.preventDefault()
-    //         // const enterConsole = document.querySelector('#enterConsole')
-    //         // if(enterConsole){
-    //         //     enterConsole.focus()
-    //         // } else{
-
-    //         //     const chagGpt = document.querySelector('#chatGpt')
-    //         //     chagGpt.scrollIntoView({behavior: 'smooth', block: 'center'})
-    //         // }
-    //     }
-    //     if (sideBar.classList.contains('deactive')) {
-    //         mainTargetDivFocused = true
-    //     }
-    //     if (!isNaN(letter) && !enterConsoleFocus && mainTargetDivFocused) {
-    //         if (mainTargetDivFocused) {
-    //             let intLet = parseInt(letter)
-    //             if (intLet <= steps.length) {
-    //                 steps[intLet - 1].focus()
-    //             } else {
-
-    //                 endNxtLesson.focus()
-    //             }
-    //         }
-    //     }
-    //     if (letter == 'enter') {
-    //         if (sideBar.classList.contains('deactive')) {
-    //             mainTargetDiv.classList.add('overflowX-none')
-    //         }
-    //     }
-    // })
+   
 
     // function pauseAllVideos() {
     //     allVideos.forEach(el => {
