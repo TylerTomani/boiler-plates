@@ -6,7 +6,7 @@
 
 /* Sidebar fixed */
 .side-bar {
-  position: fixed;
+  position: sticky;
   top: var(--header-height, 0);
   left: 0;
   width: var(--sidebar-width);
@@ -24,8 +24,8 @@
 
 /* Main content margin adjusted */
 .main-content-container {
-  margin-left: var(--main-content-margin-left);
-  padding: 1rem;
+  /* margin-left: var(--main-content-margin-left); */
+  /* padding: 1rem; */
   overflow-y: auto;
   transition: margin-left 0.3s ease;
 }
