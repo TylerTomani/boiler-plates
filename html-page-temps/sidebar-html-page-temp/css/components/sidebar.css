@@ -66,9 +66,9 @@ main.main-container.collapsed .main-content-container {
   /* No collapsing to zero - keep sidebar visible */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   :root {
     --sidebar-width: 80px;
-    --main-content-margin-left: 80px;
+    --main-content-margin-left: 140px;
   }
 }
