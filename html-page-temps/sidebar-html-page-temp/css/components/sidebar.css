@@ -9,9 +9,9 @@
 main.main-container {
   display: flex;
   flex: 1;
-  width: 100vmax;
+  width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Sidebar */
@@ -29,8 +29,7 @@ main.main-container {
 /* Main content */
 .main-content-container {
   width: var(--main-content-width);
-  /* padding: 1rem; */
-  
+  padding: 1rem;
   overflow-y: auto;
   transition: width 0.1s ease;
 
