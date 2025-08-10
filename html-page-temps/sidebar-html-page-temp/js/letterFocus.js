@@ -102,6 +102,7 @@ export function letterFocus() {
 
     // If sidebar focused but focus NOT on sidebar link (e.g., sidebar button)
     // If sidebar focused but focus NOT on sidebar link (e.g., sidebar button)
+    console.log(sideBarFocused)
 if (sideBarFocused && !activeIsSidebarLink) {
   if (key === 'a') {
     e.preventDefault();

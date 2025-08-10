@@ -39,6 +39,12 @@ main.main-container.collapsed .side-bar {
 main.main-container.collapsed .side-bar .side-bar-links-container{
   display: none;
 }
+ .side-bar-links-container .sidebar-links-ul li a{
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    padding-bottom: 10%;
+ }
  #sideBarBtn{
   font-size: 1.5rem;
  }

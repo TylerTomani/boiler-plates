@@ -60,7 +60,7 @@ export function isSideBarFocused() {
 }
 
 
-const sideBarLinks = document.querySelectorAll('.side-bar-links-ul li a');
+const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
 
 document.addEventListener('DOMContentLoaded', () => {
     // Attach link click events
