@@ -7,6 +7,9 @@
 }
 
 /* Lessons */
+.steps-container{
+  margin: 0 1%;
+}
 .step-float{
     padding-bottom: 5%;
 }

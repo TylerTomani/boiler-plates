@@ -14,11 +14,7 @@
 @import url('utilities/spacing.css');
 @import url('utilities/text.css');
 @import url('utilities/zindex.css');
-:root {
-  --sidebar-width: 10%;
-  --main-content-width: 90%;
-  --sidebar-collapsed-width: 20px;
-}
+
 *{
     margin: 0;
     padding: 0;

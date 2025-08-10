@@ -3,9 +3,10 @@ body{
 }
 main.main-container {
   display: flex;
-  overflow: hidden;
+  overflow-x: hidden;
   flex: 1;
   overflow-y: auto;
+  flex-grow: 1;
 }
 
 /* Lessons */

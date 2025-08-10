@@ -1,3 +1,6 @@
+:root{
+  --header-height: '16%'
+}
 /* ====================
    Header Component - used in other project
 ==================== */
@@ -5,11 +8,10 @@
     --links-offset: 4%
 }
 .page-header {
-  display: flex;
-  
+  display: flex; 
   /* border: 1px solid red; debug */
+  max-height: var(--header-height);
 }
-
 /* Keep header-nav and logo actions as before */
 .page-header .header-top-row {
   flex-basis: 90%;
@@ -18,7 +20,6 @@
   height: 100%;
   flex-grow: 1;
 }
-
 .page-header > .header-top-row > .header-nav {
     width: 100%;
     display: flex;
@@ -26,7 +27,7 @@
     /* flex-direction: column; */
 }
 #navLessonTitle {
-    border: 1px solid black;
+  border: 1px solid black;
   flex-basis: 36%;  /* same as home-links (90% * 40%) */
   order: 99; /* make sure it's below the other flex items */
   display: flex;
@@ -34,7 +35,6 @@
   padding-left: 1%;
 
 }
-
 /* You can adjust width by using max-width if needed */
 #navLessonTitle .nav-lesson {
   white-space: nowrap;
@@ -48,40 +48,23 @@
     height: 100%;
     flex-basis: 50%;
     flex-grow: 1;
-    /* justify-content: space-evenly; */
-    /* align-items: center; */
-
-    /* justify-content: center; */
-}
-
+}  
 .page-header .header-nav > .home-links > a,
 .page-header .header-nav > .web-links  > a{
-    /* flex-basis: 60%; */
-    display: inline-flex;
-    /* width: 100%; */
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    text-decoration: none;
-    height: 100%;
-  /* display: flex; */
-    flex-grow: 1;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  text-decoration: none;
+  height: 100%;
+  flex-grow: 1;
   flex-direction: column;
 }
-
 .page-header .header-logo-actions {
     border-bottom: 1px solid black;
-    /* flex-basis: 10%; */
-    /* display: flex; */
-    /* flex-direction: column; */
-  /* /* align-items: flex-end; align right */
-  /* border: 1px solid green; */
 }
-
 /* New: navLessonTitle below header-nav and logo */
-
-
-
 .page-header .header-logo-actions > a#tutorialLink{
     display: flex;
     justify-content: flex-end;
@@ -89,17 +72,3 @@
 .page-header .header-logo-actions img{
     max-height: 100px;
 }
-/* @media screen and (max-width: 9000px){
-    .page-header .header-nav > .home-links > a#backlink{
-        margin-left: 0%
-    }
-    .page-header .header-nav > .home-links > a#homelink{
-        margin-right: 0;
-    }
-    .page-header .header-logo-actions img{
-        max-height: 90px;
-    }
-    :root{
-        --links-offset: 30%;
-    }
-} */

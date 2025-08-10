@@ -1,41 +1,68 @@
-/* Sidebar */
+:root {
+  --sidebar-width: 120px; /* narrower fixed width */
+  --main-content-margin-left: var(--sidebar-width);
+  --sidebar-collapsed-width: 20px; /* small but visible */
+}
+
+/* Sidebar fixed */
 .side-bar {
+  position: fixed;
+  top: var(--header-height, 0);
+  left: 0;
   width: var(--sidebar-width);
   min-width: 120px;
-  transition: width 0.3s ease;
-  min-height: 100%;
+  max-width: 15vw; /* optional for responsiveness */
+  /* height: calc(100vh - var(--header-height, 0)); */
+  height: 100vh;
   background-color: #f2f2f2;
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid black;
-}
-/* When collapsed */
-main.main-container.collapsed .side-bar {
-    width: var(--sidebar-collapsed-width);
-    min-width: var(--sidebar-collapsed-width);
-}
-.side-bar-links-ul {
-  display: flex;
-  flex-direction: column;
-}
-.side-bar-links-ul li {
-  display: flex;
-}
-.side-bar-links-ul li a{ 
-  text-decoration: none;
-  display: block;
-  padding-bottom: 15%;
-  /* border: 1px solid red; */
+  transition: width 0.3s ease;
+  z-index: 1000;
 }
 
-main.main-container.collapsed .side-bar .side-bar-links-container {
+/* Main content margin adjusted */
+.main-content-container {
+  margin-left: var(--main-content-margin-left);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+/* Collapsed sidebar - always visible as 20px wide */
+main.main-container.collapsed .side-bar {
+  width: var(--sidebar-collapsed-width);
+  min-width: var(--sidebar-collapsed-width);
+  overflow: visible; /* ensure contents like buttons still show */
+}
+main.main-container.collapsed .side-bar .side-bar-links-container{
   display: none;
 }
+ #sideBarBtn{
+  font-size: 1.5rem;
+ }
+main.main-container.collapsed #sideBarBtn{
+  position: absolute;  
+  bottom: 20%;
+}
 
-main.main-container.collapsed #sideBarBtn {
-  display: block;
-  position: absolute;
-  bottom: 10px;
-  /* left: 10px; */
-  /* font-size: 24px; */
+main.main-container.collapsed .main-content-container {
+  margin-left: var(--sidebar-collapsed-width);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 100px;
+    --main-content-margin-left: 100px;
+  }
+  /* No collapsing to zero - keep sidebar visible */
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 80px;
+    --main-content-margin-left: 80px;
+  }
 }
