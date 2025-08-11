@@ -1,7 +1,7 @@
 :root{
     --highlight-color: rgb(0, 139, 79);
 }
-.header-nav a:focus,.header-nav a:hover,.header-nav a:active{
+.header-nav a:focus,.header-nav a:active{
     /* color: var(--highlight-color); */
     box-shadow: 0 0 4px 4px var(--highlight-color);
     background-color: lightcyan;

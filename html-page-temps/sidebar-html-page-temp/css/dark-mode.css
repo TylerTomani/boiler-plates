@@ -74,3 +74,6 @@ h4 .dark-mode p {
   color: white;
   
 }
+.dark-mode .sidebar-links-ul li a{
+    color: white !important;
+}

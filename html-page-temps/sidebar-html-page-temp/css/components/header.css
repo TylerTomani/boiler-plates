@@ -28,18 +28,21 @@
 }
 #navLessonTitle {
   border: 1px solid black;
-  flex-basis: 36%;  /* same as home-links (90% * 40%) */
+  flex-basis: 30%; /* This changes height*/
   order: 99; /* make sure it's below the other flex items */
   display: flex;
   align-items: center;
   padding-left: 1%;
+  flex-shrink: 1;
+  height: 2vh !important;
+  font-size: .8rem;
 
 }
 /* You can adjust width by using max-width if needed */
 #navLessonTitle .nav-lesson {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
 }
 .page-header .header-nav > .home-links,
 .page-header .header-nav > .web-links {

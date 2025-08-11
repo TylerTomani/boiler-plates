@@ -1,98 +1,48 @@
-import { injectContent } from "./inject-content.js";
-import { keyboardFocusSidebar } from "./keyboardFocusSidebar.js";
-import { letterFocus } from "./letterFocus.js";
-import { togggleSidebar } from "./components/toggle-sidebar.js";
-import { dragHideSidebar } from "./components/drag-hide-sidebar.js";
-export const mainContainer = document.querySelector('.main-container');
-export const sideBar = document.querySelector('.side-bar');
-export const sideBarBtn = document.querySelector('#sideBarBtn');
-export const navLessonTitle = document.querySelector('#navLessonTitle');
-let sideBarFocused = false;
-
-
-import { initNumFocus, numFocus } from "./numFocus.js";
+// main-script.js
+import { letterNav } from './letterNav.js';
+import { injectContent } from './inject-content.js';
+import { togggleSidebar } from './components/toggle-sidebar.js';
+import { dragHideSidebar } from './components/drag-hide-sidebar.js';
 
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
+export const mainContainer = document.querySelector('.main-container');
+export const sideBar = document.querySelector('.side-bar');
+export const cnavLessonTitle = document.querySelector('#navLessonTitle');
 
-// Initialize numFocus tracking
-initNumFocus(mainTargetDiv);
+export let mainTargetDivFocused = false;
+export const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
 
+// Track focus state
+mainTargetDiv.addEventListener('focusin', () => mainTargetDivFocused = true);
+mainTargetDiv.addEventListener('focusout', () => mainTargetDivFocused = false);
 
+// Attach listeners immediately (assuming script is at bottom or type="module")
+togggleSidebar(mainContainer);
+dragHideSidebar(mainContainer, sideBar);
+letterNav(); // letter navigation now self-contained
 
-
-
-[navLessonTitle,sideBarBtn,sideBar].forEach(el => {
-    el.addEventListener('keydown', (e) => {
-        // Handle Enter and Space keys for toggling sidebar
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault(); // Prevent default action for Enter/Space
-            console.log(e.target)
-            togggleSidebar(e,mainContainer);
-            if (el === sideBarBtn) {
-                e.stopPropagation();
-            }
-            if (el === navLessonTitle) {
-                e.stopPropagation();
-            }
-        }
-        if (e.key === 'Escape') { // Close sidebar on Escape key
-            if (!sideBar.classList.contains('collapsed')) {
-            togggleSidebar(mainContainer,e);
-            }
-        }
-    })
-    el.addEventListener('click', e =>{
-        e.preventDefault(); // Prevent default action
-        e.stopPropagation()
-        togggleSidebar(e,mainContainer)
+sideBarLinks.forEach(link => {
+    link.addEventListener('focusin', e => {
+        // console.log("Focus in:", e.currentTarget);
     });
-})
 
-sideBar.addEventListener('focusin', () => {
-  sideBarFocused = true;
-});
-sideBar.addEventListener('focusout', () => {
-  sideBarFocused = false;
-});
-
-export function isSideBarFocused() {
-  return sideBarFocused;
-}
-
-
-const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Attach link click events
-    const mainTargetDiv = document.querySelector('#mainTargetDiv');
-    initNumFocus(mainTargetDiv);
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key >= '0' && e.key <= '9') {
-            numFocus(e.key, e);
-        }
+    link.addEventListener('focusout', e => {
+        // console.log("Focus out:", e.currentTarget);
     });
-    sideBarLinks.forEach(link => {
-        if(link.hasAttribute('autofocus')){
-            injectContent(link.href)
-        }
-        link.addEventListener('click', (e) => {
+
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        // console.log("Clicked link:", e.currentTarget.href);
+    });
+
+    link.addEventListener('keydown', e => {
+        console.log("target", e.key, "on", e.target);
+        console.log("currentTarget:", e.key, "on", e.currentTarget);
+        if (e.key === "Enter") {
             e.preventDefault();
-            injectContent(link.getAttribute('href'));
-        });
-        link.addEventListener('keydown', (e) => {
-            let key = e.key
-            if(key === 'Enter' || key === ' '){
-                e.preventDefault();
-                e.stopPropagation();
-                injectContent(link.getAttribute('href'));
-            }
-        });
+            e.stopPropagation();
+            injectContent(e.currentTarget.href);
+        }
     });
-
-    // Initialize keyboard focus navigation ONCE
-    keyboardFocusSidebar();
-    letterFocus()
-    togggleSidebar()
-    dragHideSidebar(mainContainer,sideBar)
 });
