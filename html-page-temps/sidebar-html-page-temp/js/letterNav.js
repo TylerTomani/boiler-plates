@@ -4,18 +4,19 @@ import { mainTargetDiv,sideBar, sideBarLinks } from './main-script.js';
 // This should probably be exported from main-script.js too
 // so we don't create a separate variable here that might get out of sync.
 import { mainTargetDivFocused } from './main-script.js'; 
+import { iSideBarLinks } from './main-script.js';
 export let lastClickedSideLink = null
-export let iSideBarLinks = -1
-export let sideBarFocused = false
 
+export let sideBarFocused = false
 
 let lastLetterPressed = null;
 function normalizeName(el) {
     return (el.textContent || el.getAttribute('aria-label') || el.id || "")
-        .trim()
-        .toLowerCase();
+    .trim()
+    .toLowerCase();
 }
 export function letterNav() {
+    let iSideBarLinksIn = iSideBarLinks
     window.addEventListener('keydown', e => {
         const key = e.key.toLowerCase();
         // Only run when mainTargetDiv is NOT focused
@@ -27,17 +28,17 @@ export function letterNav() {
             e.preventDefault();
             console.log('skljf')
             if (e.shiftKey) {
-                iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length;
+                iSideBarLinksIn = (iSideBarLinksIn - 1 + sideBarLinks.length) % sideBarLinks.length;
             } else {
-                iSideBarLinks = (iSideBarLinks + 1) % sideBarLinks.length;
+                iSideBarLinksIn = (iSideBarLinksIn + 1) % sideBarLinks.length;
             }
-            sideBarLinks[iSideBarLinks]?.focus();
+            sideBarLinks[iSideBarLinksIn]?.focus();
             return;
         }
         if (key === 'a') {
             e.preventDefault();
-            iSideBarLinks = (iSideBarLinks - 1 + sideBarLinks.length) % sideBarLinks.length;
-            sideBarLinks[iSideBarLinks]?.focus();
+            iSideBarLinksIn = (iSideBarLinksIn - 1 + sideBarLinks.length) % sideBarLinks.length;
+            sideBarLinks[iSideBarLinksIn]?.focus();
             return;
         }
         const allEls = [...document.querySelectorAll('a, button , [id]')].filter(el => {
