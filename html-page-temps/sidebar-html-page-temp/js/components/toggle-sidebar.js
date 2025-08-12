@@ -1,17 +1,22 @@
-// js/components/toggle-sidebar.js
-export function togggleSidebar(mainContainer) {
-  addEventListener('keydown',e => {
-    let key = e.key.toLowerCase()
-    if(key === 'enter'){
-      if (e && e.target) {
-        let node = e.target;
-        while (node) {
-          if (node.tagName === 'LI') return; // ignore toggling if click was inside a link list item
-          node = node.parentElement;
-        }
-      }
+import { mainContainer, sideBar } from "../main-script.js";
+
+export function togggleSidebar() {
+  // Keyboard shortcut for toggling
+  window.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === 'enter') {
+      // Ignore if focus is on a link inside the sidebar
+      if (sideBar.contains(e.target) && e.target.tagName === 'A') return;
       mainContainer?.classList.toggle('collapsed');
     }
-  })
+  });
+
+  // Click on sidebar background (not a link) toggles
+  sideBar.addEventListener('click', e => {
+    const clickedLink = e.target.closest('.sidebar-links-ul li a');
+    if (clickedLink) {
+      // Let links behave normally (injectContent will handle)
+      return;
+    }
+    mainContainer?.classList.toggle('collapsed');
+  });
 }
-    

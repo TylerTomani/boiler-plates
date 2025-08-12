@@ -19,8 +19,9 @@ export let iSideBarLinks = 0
 mainTargetDiv.addEventListener('focusin', () => mainTargetDivFocused = true);
 mainTargetDiv.addEventListener('focusout', () => mainTargetDivFocused = false);
 
+
 // Attach listeners immediately (assuming script is at bottom or type="module")
-togggleSidebar(mainContainer);
+togggleSidebar();
 dragHideSidebar(mainContainer, sideBar);
 letterNav(); // letter navigation now self-contained
 
@@ -39,6 +40,7 @@ sideBarLinks.forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
+        injectContent(e.currentTarget.href);
     });
 
     link.addEventListener('keydown', e => {
