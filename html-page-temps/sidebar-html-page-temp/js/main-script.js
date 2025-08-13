@@ -15,7 +15,7 @@ export const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
 export let iSideBarLinks = 0;
 export let sideBarFocused = false;
 export let mainTargetDivFocused = false;
-
+let lastClickedSideLink = null
 // place with other module-level vars
 let lastFocusedSideBarLink = null;
 let sToggleFromSidebar = false; // track ping-pong state
@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('focus', () => {
             lastFocusedSideBarLink = link;
             iSideBarLinks = index;
+            mainTargetDiv = false
             sToggleFromSidebar = false; // reset toggle when entering link
         });
 
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
             injectContent(link.href);
+            
+            lastClickedSideLink = e.target
         });
 
         link.addEventListener('keydown', (e) => {
@@ -75,6 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 e.stopPropagation();
                 injectContent(link.href);
+                if (e.currentTarget == lastClickedSideLink) {
+                    mainTargetDiv.focus()
+                }
+                lastClickedSideLink = e.target
             }
         });
     });
