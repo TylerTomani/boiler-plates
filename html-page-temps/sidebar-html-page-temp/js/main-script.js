@@ -9,22 +9,31 @@ export const mainContainer = document.querySelector('.main-container');
 export const sideBar = document.querySelector('.side-bar');
 export const cnavLessonTitle = document.querySelector('#navLessonTitle');
 
-export let mainTargetDivFocused = false;
 export const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
 // change this for now when autofocus is on sidebar-links-ul
 export let iSideBarLinks = 0
 
+export let mainTargetDivFocused = false;
 
 // Track focus state
-mainTargetDiv.addEventListener('focusin', () => mainTargetDivFocused = true);
-mainTargetDiv.addEventListener('focusout', () => mainTargetDivFocused = false);
+mainTargetDiv.addEventListener('focusin', () => setMainTargetDivFocused(true));
+mainTargetDiv.addEventListener('focusout', () => setMainTargetDivFocused(false));
+
+
+
+export function setMainTargetDivFocused(value) {
+    mainTargetDivFocused = value;
+}
+
+export function getMainTargetDivFocused() {
+    return mainTargetDivFocused;
+}
 
 
 // Attach listeners immediately (assuming script is at bottom or type="module")
 togggleSidebar();
 dragHideSidebar(mainContainer, sideBar);
 letterNav(); // letter navigation now self-contained
-
 sideBarLinks.forEach(link => {
     if(link.hasAttribute('autofocus')){
         injectContent(link.href)
@@ -33,16 +42,11 @@ sideBarLinks.forEach(link => {
     link.addEventListener('focusin', e => {
         iSideBarLinks = [...sideBarLinks].indexOf(link)
     });
-
-    link.addEventListener('focusout', e => {
-    });
-
     link.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
         injectContent(e.currentTarget.href);
     });
-
     link.addEventListener('keydown', e => {
         if (e.key === "Enter") {
             e.preventDefault();
