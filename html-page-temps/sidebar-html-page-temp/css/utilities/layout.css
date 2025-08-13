@@ -1,12 +1,11 @@
 body{
-    overflow-x: hidden;
+    overflow: hidden;
 }
 main.main-container {
   display: flex;
-  overflow-x: hidden;
   flex: 1;
-  overflow-y: auto;
   flex-grow: 1;
+  overflow: hidden;
 }
 
 /* Lessons */
