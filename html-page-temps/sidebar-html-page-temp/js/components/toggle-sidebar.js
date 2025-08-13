@@ -1,5 +1,5 @@
-import { mainContainer, sideBar } from "../main-script.js";
-
+import { mainContainer, sideBar, navLessonTitle } from "../main-script.js";
+export const sideBarBtn = document.querySelector('#sideBarBtn')
 export function togggleSidebar() {
   // Keyboard shortcut for toggling
   window.addEventListener('keydown', e => {
@@ -17,6 +17,10 @@ export function togggleSidebar() {
       // Let links behave normally (injectContent will handle)
       return;
     }
-    mainContainer?.classList.toggle('collapsed');
+    toggleSideBar()
   });
+  navLessonTitle.addEventListener('click', toggleSideBar)
+  function toggleSideBar(){
+    mainContainer?.classList.toggle('collapsed');
+  }
 }

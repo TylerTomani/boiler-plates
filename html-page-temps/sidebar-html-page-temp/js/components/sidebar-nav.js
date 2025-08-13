@@ -1,6 +1,9 @@
+// sidebar-nav.js
 import { sideBarLinks } from "../main-script.js";
-let iSideBarLinks = 0
-export function sideBarNav(key,e){
+
+
+export function sideBarNav(key,e,iSideBarLinks, lastFocusedSideBarLink){
+    console.log(lastFocusedSideBarLink)
     if (key === 'f') {
         e.preventDefault();
         if (e.shiftKey) {

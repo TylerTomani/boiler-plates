@@ -3,123 +3,176 @@ import { sideBarNav } from './components/sidebar-nav.js';
 import { numFocus } from './numFocus.js';
 import { letterNav } from './letterNav.js';
 import { injectContent } from './inject-content.js';
-import { togggleSidebar } from './components/toggle-sidebar.js';
+import { togggleSidebar, sideBarBtn } from './components/toggle-sidebar.js';
 import { dragHideSidebar } from './components/drag-hide-sidebar.js';
 
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const mainContainer = document.querySelector('.main-container');
 export const sideBar = document.querySelector('.side-bar');
-export const cnavLessonTitle = document.querySelector('#navLessonTitle');
-
+export const navLessonTitle = document.querySelector('#navLessonTitle');
 export const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
-// change this for now when autofocus is on sidebar-links-ul
-export let iSideBarLinks = 0
-export let sideBarFocused = false
 
+export let iSideBarLinks = 0;
+export let sideBarFocused = false;
 export let mainTargetDivFocused = false;
-export let lastFocusedSideBarLink = null
-// Track focus state
-mainTargetDiv.addEventListener('focus', () => setMainTargetDivFocused(true));
-mainTargetDiv.addEventListener('focusout', () => setMainTargetDivFocused(false));
 
-sideBar.addEventListener('focusin', () => sideBarFocused = true);
-sideBar.addEventListener('focusout', e => {
-    // Only set false if the new focus is outside the sidebar
-    if (!sideBar.contains(e.relatedTarget)) {
-        sideBarFocused = false;
-    }
+// place with other module-level vars
+let lastFocusedSideBarLink = null;
+let sToggleFromSidebar = false; // track ping-pong state
+
+
+// ---------- Focus tracking ----------
+mainTargetDiv.addEventListener('focus', () => { mainTargetDivFocused = true; });
+mainTargetDiv.addEventListener('focusout', () => { mainTargetDivFocused = false; });
+
+sideBar.addEventListener('focusin', () => { sideBarFocused = true; });
+sideBar.addEventListener('focusout', (e) => {
+    // only mark false if focus moved completely outside the sidebar
+    if (!sideBar.contains(e.relatedTarget)) sideBarFocused = false;
 });
 
-
-export function setMainTargetDivFocused(value) {
-    mainTargetDivFocused = value;
-}
-
-export function updateMainTargetDivFocused() {
-    return mainTargetDivFocused;
-}
-
-
-// Attach listeners immediately (assuming script is at bottom or type="module")
+// ---------- Init sidebar toggle/drag ----------
 togggleSidebar();
 dragHideSidebar(mainContainer, sideBar);
 
-addEventListener('DOMContentLoaded', () =>{
-    sideBarLinks.forEach(link => {
+// ---------- Helpers ----------
+const sideBarLinksArr = Array.from(sideBarLinks);
+const isSidebarLink = (el) => sideBarLinksArr.includes(el);
+const insideSidebar = (el) => el && sideBar.contains(el);
+
+// ---------- DOM ready ----------
+document.addEventListener('DOMContentLoaded', () => {
+    // Initial content & last focused link
+    sideBarLinksArr.forEach((link, index) => {
         if (link.hasAttribute('autofocus')) {
-            injectContent(link.href)
-            iSideBarLinks = [...sideBarLinks].indexOf(link)
-        } else {
-            injectContent('home-page.html')
+            injectContent(link.href);
+            iSideBarLinks = index;
+            lastFocusedSideBarLink = link;
         }
-        link.addEventListener('focusin', e => {
-            iSideBarLinks = [...sideBarLinks].indexOf(link)
+    });
+    if (!lastFocusedSideBarLink) {
+        injectContent('home-page.html');
+    }
+
+    // Track last focused sidebar link + basic link handlers
+    // Track last focused sidebar link + basic link handlers
+    sideBarLinksArr.forEach((link, index) => {
+        link.addEventListener('focus', () => {
+            lastFocusedSideBarLink = link;
+            iSideBarLinks = index;
+            sToggleFromSidebar = false; // reset toggle when entering link
         });
-        link.addEventListener('click', e => {
+
+        link.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            injectContent(e.currentTarget.href);
+            injectContent(link.href);
         });
-        link.addEventListener('keydown', e => {
-            let key = e.key.toLowerCase()
 
-            if (key === "enter") {
+        link.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+            if (key === 'enter') {
                 e.preventDefault();
                 e.stopPropagation();
-                injectContent(e.currentTarget.href);
-            }
-            if (key === 'm') {
-                // e.preventDefault()
-                mainTargetDiv.focus()
+                injectContent(link.href);
             }
         });
     });
 
 
-    if(sideBarFocused && key === 'm') {
-        return 
-    }
-    letterNav(); // letter navigation now self-contained
-    addEventListener('keydown', e => {
+    // Initialize letter navigation exactly once
+    letterNav();
+
+    // ---------- HIGH-PRIORITY 'm' (capture) ----------
+    // If the event starts inside the sidebar, pressing 'm' must ALWAYS go to mainTargetDiv first.
+    // Capture-phase + stopPropagation ensures this beats other listeners (e.g., letterNav).
+    window.addEventListener(
+        'keydown',
+        (e) => {
+            const key = e.key.toLowerCase();
+            if (e.metaKey || e.ctrlKey || e.altKey) return; // don't touch browser/system shortcuts
+
+            if (key === 'm' && insideSidebar(e.target)) {
+                e.preventDefault();
+                e.stopPropagation();
+                mainTargetDiv.focus();
+                return;
+            }
+        },
+        true // <-- capture phase
+    );
+
+    // ---------- Global keydown (bubble) ----------
+    document.addEventListener('keydown', (e) => {
         const key = e.key.toLowerCase();
 
-        // ✅ 1. If anything inside sidebar has focus and 'm' pressed
+        // Don't interfere with browser/system shortcuts
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+        // 1) Sidebar-focused + 'm' (redundant safety net, in case capture didn't catch)
         if (sideBarFocused && key === 'm') {
             e.preventDefault();
             mainTargetDiv.focus();
             return;
         }
-        if (!sideBarFocused && (key === 's' || key === 'f' || key === 'a')){
-            // Add lastFocusedSideBarLink logic here
-            e.preventDefault();
-            
-            return 
 
+        // 2) 's' toggle:
+        //    - If a sidebar link is focused → go to sidebar button
+        //    - Otherwise, if we have a last focused link → go back to it
+        if (key === 's' && e.shiftKey) {
+            sideBarBtn.focus()
+            return
+        }
+        if (key === 's') {
+            const active = document.activeElement; // declare first
+
+            // CASE 1: From sidebar link → go to button
+            if (isSidebarLink(active)) {
+                e.preventDefault();
+                if (sideBarBtn) {
+                    if (!sideBarBtn.hasAttribute('tabindex')) {
+                        sideBarBtn.setAttribute('tabindex', '0');
+                    }
+                    sideBarBtn.focus();
+                    sToggleFromSidebar = true;
+                }
+                return;
+            }
+
+            // CASE 2: From button → go back to last focused link
+            if (active === sideBarBtn && sToggleFromSidebar && lastFocusedSideBarLink) {
+                e.preventDefault();
+                lastFocusedSideBarLink.focus();
+                sToggleFromSidebar = false;
+                return;
+            }
+
+            // CASE 3: Anywhere else → jump straight to last sidebar link
+            if (lastFocusedSideBarLink) {
+                e.preventDefault();
+                lastFocusedSideBarLink.focus();
+                sToggleFromSidebar = false;
+            }
         }
 
-        // ✅ 2. Number keys only when mainTargetDiv NOT focused
+
+
+        // 3) Number keys only when mainTargetDiv is NOT focused
         if (!mainTargetDivFocused && /^[0-9]$/.test(key)) {
             e.preventDefault();
             numFocus(key, e);
             return;
         }
 
-        // ✅ 3. MainTargetDiv focused — only intercept letters/numbers, let Tab work
-        if (mainTargetDivFocused) {
-            if (/^[0-9a-z]$/.test(key)) {
-                e.preventDefault();
-                // stepTxt(key, e); // future
-            }
-            return; // other keys (Tab, Shift+Tab) behave normally
-        }
-
-        // ✅ 4. Letter navigation for other keys
-        if (/^[a-z0-9]$/.test(key)) {
+        // 4) (Future) mainTargetDiv-specific letters/numbers
+        if (mainTargetDivFocused && /^[0-9a-z]$/.test(key)) {
             e.preventDefault();
-            sideBarNav(key, e, iSideBarLinks);
-            letterNav(); // optional
+            // stepTxt(key, e) // implement later
+            return;
         }
+
+        // 5) Sidebar nav helpers (handles 'f', 'a', 'Shift+f', etc.)
+        sideBarNav(key, e, iSideBarLinks, lastFocusedSideBarLink);
+        // NOTE: sideBarNav should call preventDefault itself only for keys it handles.
     });
-
-
-})
+});
