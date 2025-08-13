@@ -1,4 +1,5 @@
 import { mainTargetDiv } from './main-script.js'; // Make sure this path works for your setup
+import { letterNav } from './letterNav.js';
 
 /**
  * Inject HTML content from URL into mainTargetDiv.
@@ -12,6 +13,7 @@ export async function injectContent(url) {
     }
     const html = await response.text();
     mainTargetDiv.innerHTML = html;
+    // letterNav()
     return Promise.resolve();
   } catch (error) {
     console.error('Error injecting content:', error);
