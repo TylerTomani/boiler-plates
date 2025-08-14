@@ -1,7 +1,0 @@
-#mainCode:active,#mainCode:focus{
-    /* box-shadow: 0 0 13px 13px blue; */
-    border:  5px solid orange;
-}
-.browser-tools-code .tool-code {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
