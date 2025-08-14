@@ -1,49 +1,17 @@
-// numFocus.js
-export const sideBarLinks = [...document.querySelectorAll('.sidebar-links-ul > li > a')];
+import { sideBarLinks, mainTargetDivFocused } from './main-script.js';
 import { stepTxtsFocus } from "./components/stepTxts.js";
-let mainTargetDivFocused = false;
 
-// import { stepTxtsFocus } from "./components/stepTxts.js";
-
-export function initNumFocus(mainTargetDiv) {
-    if (!mainTargetDiv) {
-        console.error("mainTargetDiv not found in DOM");
-        return;
-    }
-
-    mainTargetDiv.addEventListener('focusin', () => {
-        mainTargetDivFocused = true;
-        console.log('mainTargetDiv is focused');
-    });
-    mainTargetDiv.addEventListener('blur', () => {
-        mainTargetDivFocused = false;
-        console.log('mainTargetDiv lost focus');
-    });
-      mainTargetDiv.addEventListener('focusout', (e) => {
-        // Check if the new focused element is outside mainTargetDiv
-        mainTargetDivFocused = false;
-        if (!mainTargetDiv.contains(e.relatedTarget)) {
-            console.log('mainTargetDiv lost focus entirely');
-        }
-    });
-}
-
-export function numFocus(key, e,iSideBarLinks) {
+export function numFocus(key, e) {
     e.preventDefault();
     e.stopPropagation();
-    
-    console.log(e.target)
+
     if (!mainTargetDivFocused) {
-        const intLet = parseInt(key, 10);
-        if (!isNaN(intLet) && intLet >= 1 && intLet <= sideBarLinks.length) {
-            sideBarLinks[intLet - 1]?.focus();
+        const idx = parseInt(key, 10) - 1;
+        if (idx >= 0 && idx < sideBarLinks.length) {
+            sideBarLinks[idx].focus();
         }
     } else {
-        console.log(mainTargetDivFocused)
-        console.log('ksljldf')
-        stepTxtsFocus(e);
-    }
-    if(iSideBarLinks){
-        // sideBarLinks[iSideBarLinks].focus()
+        // Inside mainTargetDiv → handle with stepTxtsFocus
+        stepTxtsFocus(key, e);
     }
 }
