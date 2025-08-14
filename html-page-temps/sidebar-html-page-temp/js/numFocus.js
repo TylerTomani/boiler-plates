@@ -1,6 +1,6 @@
 // numFocus.js
 export const sideBarLinks = [...document.querySelectorAll('.sidebar-links-ul > li > a')];
-
+import { stepTxtsFocus } from "./components/stepTxts.js";
 let mainTargetDivFocused = false;
 
 // import { stepTxtsFocus } from "./components/stepTxts.js";
@@ -31,15 +31,17 @@ export function initNumFocus(mainTargetDiv) {
 export function numFocus(key, e,iSideBarLinks) {
     e.preventDefault();
     e.stopPropagation();
-
-
+    
+    console.log(e.target)
     if (!mainTargetDivFocused) {
         const intLet = parseInt(key, 10);
         if (!isNaN(intLet) && intLet >= 1 && intLet <= sideBarLinks.length) {
             sideBarLinks[intLet - 1]?.focus();
         }
     } else {
-        // stepTxtsFocus(e);
+        console.log(mainTargetDivFocused)
+        console.log('ksljldf')
+        stepTxtsFocus(e);
     }
     if(iSideBarLinks){
         // sideBarLinks[iSideBarLinks].focus()

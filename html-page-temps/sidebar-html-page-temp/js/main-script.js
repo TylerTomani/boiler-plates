@@ -5,6 +5,7 @@ import { letterNav } from './letterNav.js';
 import { injectContent } from './inject-content.js';
 import { togggleSidebar, sideBarBtn } from './components/toggle-sidebar.js';
 import { dragHideSidebar } from './components/drag-hide-sidebar.js';
+import { stepTxtsFocus } from './components/stepTxts.js';
 
 export const mainTargetDiv = document.querySelector('#mainTargetDiv');
 export const mainContainer = document.querySelector('.main-container');
@@ -15,9 +16,9 @@ export const sideBarLinks = document.querySelectorAll('.sidebar-links-ul li a');
 export let iSideBarLinks = 0;
 export let sideBarFocused = false;
 export let mainTargetDivFocused = false;
-let lastClickedSideLink = null
+export let lastClickedSideLink = null
 // place with other module-level vars
-let lastFocusedSideBarLink = null;
+export let lastFocusedSideBarLink = null;
 let sToggleFromSidebar = false; // track ping-pong state
 
 
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             injectContent(link.href);
             iSideBarLinks = index;
             lastFocusedSideBarLink = link;
+            sToggleFromSidebar = false
         }
     });
     if (!lastFocusedSideBarLink) {
@@ -60,14 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('focus', () => {
             lastFocusedSideBarLink = link;
             iSideBarLinks = index;
-            mainTargetDiv = false
+            mainTargetDivFocused = false
             sToggleFromSidebar = false; // reset toggle when entering link
         });
 
         link.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            injectContent(link.href);
+            injectContent(link.href,e);
             
             lastClickedSideLink = e.target
         });
@@ -77,9 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (key === 'enter') {
                 e.preventDefault();
                 e.stopPropagation();
-                injectContent(link.href);
+                injectContent(link.href, e);
+                const h3Title = mainTargetDiv.querySelector('.header-codeColor-lesson h3')
+                navLessonTitle.innerText = e.target.innerText
                 if (e.currentTarget == lastClickedSideLink) {
                     mainTargetDiv.focus()
+                    
                 }
                 lastClickedSideLink = e.target
             }
@@ -126,41 +131,43 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2) 's' toggle:
         //    - If a sidebar link is focused → go to sidebar button
         //    - Otherwise, if we have a last focused link → go back to it
-        if (key === 's' && e.shiftKey) {
-            sideBarBtn.focus()
-            return
-        }
-        if (key === 's') {
-            const active = document.activeElement; // declare first
+        
+        document.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-            // CASE 1: From sidebar link → go to button
-            if (isSidebarLink(active)) {
+            const active = document.activeElement;
+
+            // Shift+S goes directly to sidebar button
+            if (key === 's' && e.shiftKey) {
                 e.preventDefault();
-                if (sideBarBtn) {
-                    if (!sideBarBtn.hasAttribute('tabindex')) {
-                        sideBarBtn.setAttribute('tabindex', '0');
-                    }
-                    sideBarBtn.focus();
-                    sToggleFromSidebar = true;
+                sideBarBtn.focus();
+                return;
+            }
+
+            // Ping-pong 's' toggle
+            if (key === 's' && !e.shiftKey) {
+                e.preventDefault();
+
+                // CASE 1: From sidebar link → go to sidebar button
+                
+
+                // CASE 2: From sidebar button → go back to last focused link
+                if (active === sideBarBtn && sToggleFromSidebar && lastFocusedSideBarLink) {
+                    (lastClickedSideLink || lastFocusedSideBarLink).focus();
+                    sToggleFromSidebar = false;
+                    return;
+                }
+
+                // CASE 3: From anywhere else → go to last focused link
+                if (lastFocusedSideBarLink) {
+                    lastFocusedSideBarLink.focus();
+                    sToggleFromSidebar = false;
                 }
                 return;
             }
+        });
 
-            // CASE 2: From button → go back to last focused link
-            if (active === sideBarBtn && sToggleFromSidebar && lastFocusedSideBarLink) {
-                e.preventDefault();
-                lastFocusedSideBarLink.focus();
-                sToggleFromSidebar = false;
-                return;
-            }
-
-            // CASE 3: Anywhere else → jump straight to last sidebar link
-            if (lastFocusedSideBarLink) {
-                e.preventDefault();
-                lastFocusedSideBarLink.focus();
-                sToggleFromSidebar = false;
-            }
-        }
 
 
 
@@ -174,7 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4) (Future) mainTargetDiv-specific letters/numbers
         if (mainTargetDivFocused && /^[0-9a-z]$/.test(key)) {
             e.preventDefault();
-            // stepTxt(key, e) // implement later
+            
+            // stepTxtsFocus(key, e) // implement later
             return;
         }
 
