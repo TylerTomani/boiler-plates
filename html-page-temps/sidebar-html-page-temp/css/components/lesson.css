@@ -1,5 +1,9 @@
+#mainTargetDiv{
+    /* width: 100%; */
+    /* background-color: blue; */
+}
 #targetDiv{
-    /* width: 100vw; */
+    width: 100vmax;
     overflow-x: hidden;
 }
 .step-img,

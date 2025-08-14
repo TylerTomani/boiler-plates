@@ -1,6 +1,6 @@
 :root {
   --sidebar-width: 120px; /* narrower fixed width */
-  --main-content-margin-left: var(--sidebar-width);
+  /* --main-content-margin-left: var(--sidebar-width); */
   --sidebar-collapsed-width: 20px; /* small but visible */
 }
 
@@ -27,7 +27,7 @@
   /* margin-left: var(--main-content-margin-left); */
   /* padding: 1rem; */
   overflow-y: auto;
-  transition: margin-left 0.3s ease;
+  /* transition: margin-left 0.3s ease; */
 }
 
 /* Collapsed sidebar - always visible as 20px wide */
@@ -53,9 +53,7 @@ main.main-container.collapsed #sideBarBtn{
   bottom: 20%;
 }
 
-main.main-container.collapsed .main-content-container {
-  margin-left: var(--sidebar-collapsed-width);
-}
+
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
