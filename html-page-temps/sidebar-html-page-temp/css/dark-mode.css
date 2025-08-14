@@ -9,13 +9,8 @@
     background-color: var(--bg-primary-db);
     color: var(--font-primary-db)
 }
-.dark-mode .step:active, .dark-mode .step:focus,
-.dark-mode .step-float:active, .step-float:focus {
-    /* font-style: bold; */
-    /* background-color: blue; */
-    /* font-weight: 800; */
-    /* color: white; */
-}
+
+
 .dark-mode #mainLinksContainer{
     color: var(--font-primary-db);
     background-color: var(--bg-primary);
@@ -37,12 +32,6 @@
 .dark-mode .section-container>.section {
     color: var(--font-primary-db);
 }
-.dark-mode header a:active, .dark-mode header a:focus {
-    /* color: darkblue */
-}
-.dark-mode a {
-    color: white;
-}
 .dark-mode,
 h4 .dark-mode p {
     color: whitesmoke;
@@ -56,24 +45,23 @@ h4 .dark-mode p {
 .dark-mode .code-container{
     border: 1px solid white;
 }
+.dark-mode .sidebar-links-ul li a {
+    color: white !important;
+}
 .dark-mode .code-container,
 .dark-mode .code-container>.copy-code {
     background-color: var(--bg-primary);
     color: white;
 }
-
-.dark-mode .page-header .header-nav > .home-links > a,
-.dark-mode .page-header .header-nav > .web-links  > a{
-    border: 1px solid whitesmoke
-}
 .dark-mode #navLessonTitle {
     border: 1px solid white;
 }
-.dark-mode .page-header .header-nav > .home-links > a,
-.dark-mode .page-header .header-nav > .web-links  > a{
-  color: white;
-  
-}
-.dark-mode .sidebar-links-ul li a{
-    color: white !important;
+.dark-mode .page-header .header-top-row .header-nav a,
+.dark-mode .page-header .header-top-row .header-nav a {
+    color: whitesmoke 
+} 
+.dark-mode .page-header .header-top-row .header-nav a:focus,
+.dark-mode .page-header .header-top-row .header-nav a:active{
+    color: black !important;
+
 }
