@@ -1,0 +1,21 @@
+:root{
+    --highlight-color: rgb(0, 139, 79);
+}
+.header-nav a:focus,.header-nav a:active{
+    /* color: var(--highlight-color); */
+    box-shadow: 0 0 4px 4px var(--highlight-color);
+    background-color: lightcyan;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}   
+ /* Main content */
+.main-content-container {
+  transition: width 0.1s ease;
+}
+
+
+/* Lessons */
+.step:active,.step:focus, 
+.step-float:active,.step-float:focus{
+    font-style: bold;
+}

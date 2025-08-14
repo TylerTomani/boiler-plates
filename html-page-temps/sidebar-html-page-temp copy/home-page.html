@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>homePage</title>
+</head>
+<body >
+    <div id="targetDiv"class="home-page" >
+        <header class="header-codeColor-lesson">
+            <h3>Inheritance</h3>
+        </header>
+        <div class="main-container-codeColor" >
+            <div class="steps-container">
+                <!-- 05 imgs-container -->
+                <div tabindex="0" class="step-float br1">
+                    <div class="step-txt">
+                        <h4>05</h4>
+                        <p>
+                            This page's logic
+                        </p>
+                    </div>
+                    <div class="imgs-container">
+                        <div class="code-container">
+                            <textarea readonly tabindex="0" class="copy-code">
+                                [Keyboard] --> [Letter/Number Key Press] --> [Focus Logic]
+
+Letters:
+   ┌────────────┐
+   │ Press key  │
+   └─────┬──────┘
+         ▼
+ ┌───────────────────────────────┐
+ │ Filter all visible elements   │
+ │ by first letter (normalize)  │
+ └────────────┬──────────────────┘
+              ▼
+ ┌───────────────────────────────┐
+ │ Cycle through matches        │
+ │ (forward/backward with Shift)│
+ └────────────┬──────────────────┘
+              ▼
+ ┌───────────────┐
+ │ Focus target  │
+ └───────────────┘
+
+Numbers:
+   ┌────────────┐
+   │ Press 0-9  │
+   └─────┬──────┘
+         ▼
+ ┌───────────────────────────────┐
+ │ Only sidebar links are matched│
+ │ (when mainTargetDiv NOT focused) │
+ └────────────┬──────────────────┘
+              ▼
+ ┌───────────────┐
+ │ Focus target  │
+ └───────────────┘
+
+                            </textarea>
+                        </div>
+                        <div class="img-container">
+                            <div class="step-img">
+                                <img src="images/sidebar-nav-diagram.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="ex.js"></script>
+</body>
+</html>

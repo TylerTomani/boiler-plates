@@ -1,0 +1,15 @@
+body{
+    overflow: hidden;
+}
+main.main-container {
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Lessons */
+.step {
+    display: flex;
+    justify-content: space-between;
+}

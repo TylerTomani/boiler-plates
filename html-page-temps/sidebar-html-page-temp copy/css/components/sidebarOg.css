@@ -1,0 +1,65 @@
+/* Default */
+:root {
+  --sidebar-width: 10%;
+  --main-content-width: 90%;
+  --sidebar-collapsed-width: 20px;
+}
+
+/* Layout container */
+main.main-container {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.side-bar {
+  width: var(--sidebar-width);
+  min-width: 120px;
+  transition: width 0.3s ease;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+/* Main content */
+.main-content-container {
+  width: var(--main-content-width);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: width 0.1s ease;
+
+}
+
+/* When collapsed */
+main.main-container.collapsed .side-bar {
+    width: var(--sidebar-collapsed-width);
+    min-width: var(--sidebar-collapsed-width);
+}
+.side-bar-links-ul {
+  display: flex;
+  flex-direction: column;
+}
+.side-bar-links-ul li {
+    display: flex;
+}
+.side-bar-links-ul li a{ 
+    text-decoration: none;
+    display: block;
+    padding-bottom: 15%;
+    /* border: 1px solid red; */
+}
+
+main.main-container.collapsed .main-content-container {
+  width: calc(100% - var(--sidebar-collapsed-width));
+}
+main.main-container.collapsed #sideBarBtn {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  /* left: 10px; */
+  /* font-size: 24px; */
+}

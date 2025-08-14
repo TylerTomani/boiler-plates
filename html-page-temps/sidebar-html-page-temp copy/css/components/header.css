@@ -1,0 +1,77 @@
+:root{
+  --header-height: '10%'
+}
+/* ====================
+   Header Component - used in other project
+==================== */
+:root {
+    --links-offset: 4%
+}
+.page-header {
+  display: flex; 
+  /* border: 1px solid red; debug */
+  max-height: var(--header-height);
+}
+/* Keep header-nav and logo actions as before */
+.page-header .header-top-row {
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+.page-header > .header-top-row > .header-nav {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    /* flex-direction: column; */
+}
+#navLessonTitle {
+  border: 1px solid black;
+  flex-basis: 30%; /* This changes height*/
+  order: 99; /* make sure it's below the other flex items */
+  display: flex;
+  align-items: center;
+  padding-left: 1%;
+  flex-shrink: 1;
+  height: 2vh !important;
+  font-size: .8rem;
+
+}
+/* You can adjust width by using max-width if needed */
+#navLessonTitle .nav-lesson {
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+}
+.page-header .header-nav > .home-links,
+.page-header .header-nav > .web-links {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-basis: 50%;
+    flex-grow: 1;
+}  
+.page-header .header-nav > .home-links > a,
+.page-header .header-nav > .web-links  > a{
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  text-decoration: none;
+  height: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.page-header .header-logo-actions {
+    border-bottom: 1px solid black;
+}
+/* New: navLessonTitle below header-nav and logo */
+.page-header .header-logo-actions > a#tutorialLink{
+    display: flex;
+    justify-content: flex-end;
+}
+.page-header .header-logo-actions img{
+    max-height: 100px;
+}

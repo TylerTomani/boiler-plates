@@ -1,0 +1,11 @@
+@media screen and (max-width:720px) {
+    /* Sidebar */
+    .side-bar {
+        /* width: var(--sidebar-width); */
+        /* overflow-x: scroll; */
+    }   
+    .side-bar-links-ul {
+        font-size: 90%;
+    }
+    
+}

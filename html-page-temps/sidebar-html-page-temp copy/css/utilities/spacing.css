@@ -1,0 +1,23 @@
+#sideBarBtn {
+    padding: 1%;
+}
+
+.code-container {
+  margin-top: 2.5%;
+}
+
+/* Lessons */
+.main-container.collapsed .steps-container{
+  /* margin: 0 1%; */
+}
+.steps-container{
+  /* margin-left: 5%; */
+
+}
+.step-float{
+    padding-bottom: 5%;
+}
+
+.step > .step-txt{
+    /* padding: 1%; */
+}
