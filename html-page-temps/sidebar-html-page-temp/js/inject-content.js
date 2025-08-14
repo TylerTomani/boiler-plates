@@ -1,9 +1,10 @@
-import { mainTargetDiv } from './main-script.js'; // Make sure this path works for your setup
-import { letterNav } from './letterNav.js';
+// inject-content.js
+import { mainTargetDiv } from './main-script.js';
+import { FocusManager } from './components/focusManager.js';
 
 /**
- * Inject HTML content from URL into mainTargetDiv.
- * Returns a Promise that resolves when content is injected.
+ * Inject HTML content from a URL into mainTargetDiv.
+ * Updates FocusManager with the new steps.
  */
 export async function injectContent(url) {
   try {
@@ -11,17 +12,15 @@ export async function injectContent(url) {
     if (!response.ok) {
       throw new Error(`Failed to load ${url}: ${response.status}`);
     }
+
     const html = await response.text();
 
     // Inject the HTML
     mainTargetDiv.innerHTML = html;
 
-    // Now query the injected DOM
-    const h3 = mainTargetDiv.querySelector('.header-codeColor-lesson h3');
-    console.log(h3.textContent); // or whatever you want to do with it
-
-    // Optional: call other functions that depend on injected content
-    // letterNav();
+    // Grab all .step elements inside the new content
+    const steps = mainTargetDiv.querySelectorAll('.step');
+    FocusManager.setSteps(steps);
 
     return Promise.resolve();
   } catch (error) {
