@@ -12,8 +12,17 @@ export async function injectContent(url) {
       throw new Error(`Failed to load ${url}: ${response.status}`);
     }
     const html = await response.text();
+
+    // Inject the HTML
     mainTargetDiv.innerHTML = html;
-    // letterNav()
+
+    // Now query the injected DOM
+    const h3 = mainTargetDiv.querySelector('.header-codeColor-lesson h3');
+    console.log(h3.textContent); // or whatever you want to do with it
+
+    // Optional: call other functions that depend on injected content
+    // letterNav();
+
     return Promise.resolve();
   } catch (error) {
     console.error('Error injecting content:', error);

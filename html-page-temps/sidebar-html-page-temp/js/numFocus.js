@@ -40,7 +40,7 @@ export function numFocus(key, e,iSideBarLinks) {
         }
     } else {
         console.log(mainTargetDivFocused)
-        console.log('ksljldf')
+        
         stepTxtsFocus(e);
     }
     if(iSideBarLinks){
