@@ -6,6 +6,7 @@ main.main-container {
   flex: 1;
   flex-grow: 1;
   overflow: hidden;
+  overflow-y: scroll;
 }
 
 /* Lessons */

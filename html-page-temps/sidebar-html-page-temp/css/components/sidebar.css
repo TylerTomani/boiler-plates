@@ -1,60 +1,86 @@
 :root {
-  --sidebar-width: 120px; /* narrower fixed width */
-  /* --main-content-margin-left: var(--sidebar-width); */
-  --sidebar-collapsed-width: 20px; /* small but visible */
+  --sidebar-width: 120px;
+  /* expanded width */
+  --sidebar-collapsed-width: 20px;
+  /* collapsed width */
 }
 
-/* Sidebar fixed */
+/* Main layout */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* Sidebar */
 .side-bar {
   position: sticky;
   top: var(--header-height, 0);
   left: 0;
+  overflow: visible;
   width: var(--sidebar-width);
-  min-width: 120px;
-  max-width: 15vw; /* optional for responsiveness */
-  /* height: calc(100vh - var(--header-height, 0)); */
-  height: 100vh;
+  min-width: var(--sidebar-width);
   background-color: #f2f2f2;
-  overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid black;
   transition: width 0.3s ease;
-  z-index: 1000;
+  z-index: 9;
 }
 
-/* Main content margin adjusted */
-.main-content-container {
-  /* margin-left: var(--main-content-margin-left); */
-  /* padding: 1rem; */
-  overflow-y: auto;
-  /* transition: margin-left 0.3s ease; */
-}
-
-/* Collapsed sidebar - always visible as 20px wide */
 main.main-container.collapsed .side-bar {
   width: var(--sidebar-collapsed-width);
   min-width: var(--sidebar-collapsed-width);
-  overflow: visible; /* ensure contents like buttons still show */
 }
-main.main-container.collapsed .side-bar .side-bar-links-container{
+
+main.main-container.collapsed .side-bar .side-bar-links-container {
   display: none;
 }
- .side-bar-links-container .sidebar-links-ul li a{
-    text-decoration: none;
-    color: black;
-    display: inline-block;
-    padding-bottom: 10%;
- }
- #sideBarBtn{
-  font-size: 1.5rem;
- }
-main.main-container.collapsed #sideBarBtn{
-  position: absolute;  
-  bottom: 20%;
+
+/* Sidebar button styles */
+.side-bar-links-container .sidebar-links-ul li a {
+  text-decoration: none;
+  /* color: black; */
+  display: inline-block;
+  padding-bottom: 10%;
+}
+.sideBarBtn-container{
+  border: 2px solid blue;
+}
+#sideBarBtn {
+  font-size: 2rem;
+  position: sticky;
+
+  /* stays in place even if sidebar collapses */
+  
+  /* way above everything else */
+  /* top: 20px; */
+  /* adjust placement as needed */
+  /* left: 10px; */
+  /* adjust for collapsed/expanded sidebar */
 }
 
+main.main-container.collapsed #sideBarBtn {
+  /* Only adjust position if you want it to shift when collapsed */
+  left: 5px;
+}
+main.main-container.collapsed #sideBarBtn {
+  position: fixed;
+  z-index: 4;
+  bottom: 10%;
+}
 
+/* Main content */
+.main-content-container {
+  flex: 1;
+  /* takes remaining space */
+  overflow-y: auto;
+  background: white;
+}
 
+#mainTargetDiv {
+  width: 100%;
+  height: 100%;
+}
 /* Responsive tweaks */
 @media (max-width: 768px) {
   :root {
