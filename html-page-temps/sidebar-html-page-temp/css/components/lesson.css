@@ -3,7 +3,6 @@
     /* background-color: blue; */
 }
 #targetDiv{
-    width: 100vmax;
     overflow-x: hidden;
 }
 .step-img,

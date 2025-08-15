@@ -1,13 +1,7 @@
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
 }
-main.main-container {
-  display: flex;
-  flex: 1;
-  flex-grow: 1;
-  overflow: hidden;
-  overflow-y: scroll;
-}
+
 
 /* Lessons */
 .step {

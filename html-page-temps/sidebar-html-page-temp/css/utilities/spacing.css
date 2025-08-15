@@ -5,7 +5,9 @@
 .code-container {
   margin-top: 2.5%;
 }
-
+.code-container>.copy-code {
+  padding: 1%
+}
 /* Lessons */
 .main-container.collapsed .steps-container{
   /* margin: 0 1%; */
