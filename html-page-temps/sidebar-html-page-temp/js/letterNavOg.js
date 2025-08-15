@@ -88,7 +88,7 @@ export function letterNav() {
             if (sideBarLinks.length) sideBarLinks[0].focus();
             return;
         }
-        // ----------  → next sidebar link ----------
+        // ---------- A → next sidebar link ----------
         if (key === "a" && !e.metaKey && !e.ctrlKey && !e.altKey) {
             e.preventDefault();
 
