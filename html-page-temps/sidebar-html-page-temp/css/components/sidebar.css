@@ -5,6 +5,7 @@
   --sidebar-collapsed-width: 20px;
   /* small but visible */
 }
+
 #mainTargetDiv {
   display: flex;
   width: 100%;
@@ -46,10 +47,7 @@ main.main-container.collapsed .main-content-container{
   right: 0;
   
 }
-#mainTargetDiv {
-  display: flex;
-  width: 100%
-}
+
 
 
 main.main-container.collapsed .side-bar .side-bar-links-container {
