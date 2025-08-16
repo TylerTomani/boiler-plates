@@ -3,6 +3,7 @@
   /* narrower fixed width */
   --main-content-width: calc(100% - var(--sidebar-width));
   --sidebar-collapsed-width: 20px;
+  --header-height: '10%'
   /* small but visible */
 }
 
@@ -26,7 +27,6 @@ main.main-container {
   position: fixed;
   width:20% ;
   left: 0;
-  top: var(--header-height);
   height: 100vh;
   border: 1px solid black;
   overflow-x: hidden;
@@ -40,7 +40,7 @@ main.main-container.collapsed .side-bar {
 main.main-container .main-content-container{
   position: fixed;
   left: 20%;
-  top: var(--header-height);
+  /* top: var(--header-height); */
 }
 main.main-container.collapsed .main-content-container{
   width: 100%;

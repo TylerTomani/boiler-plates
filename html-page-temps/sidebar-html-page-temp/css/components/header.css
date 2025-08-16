@@ -1,12 +1,12 @@
 :root{
-  --header-height: '10%'
+  /* I put this in sidebar.css :root */
+  /* --header-height: '10%' */
+  --links-offset: 4%
 }
 /* ====================
    Header Component - used in other project
 ==================== */
-:root {
-    --links-offset: 4%
-}
+
 .page-header {
   display: flex; 
   /* border: 1px solid red; debug */
