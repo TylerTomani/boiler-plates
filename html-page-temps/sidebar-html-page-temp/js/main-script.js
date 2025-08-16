@@ -1,3 +1,4 @@
+// main-script.js   
 import { sideBarNav } from './components/sidebar-nav.js';
 import { numFocus } from './numFocus.js';
 import { letterNav } from './letterNav.js';
