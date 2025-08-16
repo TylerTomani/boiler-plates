@@ -3,7 +3,7 @@
   /* narrower fixed width */
   --main-content-width: calc(100% - var(--sidebar-width));
   --sidebar-collapsed-width: 20px;
-  --header-height: '10%'
+  --header-height: 10vh;
   /* small but visible */
 }
 
@@ -37,10 +37,16 @@ main.main-container.collapsed .side-bar {
   /* ensure contents like buttons still show */
 }
 
-main.main-container .main-content-container{
+main.main-container .main-content-container {
   position: fixed;
   left: 20%;
-  /* top: var(--header-height); */
+  right: 0;
+  /* ensures full width */
+  top: var(--header-height);
+  /* lock it properly */
+  bottom: 0;
+  overflow: hidden;
+  /* so only #mainTargetDiv scrolls */
 }
 main.main-container.collapsed .main-content-container{
   width: 100%;
