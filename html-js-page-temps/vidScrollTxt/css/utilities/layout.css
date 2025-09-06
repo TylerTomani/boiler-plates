@@ -1,0 +1,21 @@
+.page-layout {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+
+/* Sentence Container */
+.sentences-scroll-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 1rem;
+}
+/* Sentence Blocks */
+.sentence {
+  box-sizing: border-box;
+  flex: 1 1 280px;
+}
+

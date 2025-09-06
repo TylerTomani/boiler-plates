@@ -1,0 +1,13 @@
+<code  tabindex="0" class="copy-code language-js">
+function getComputedStylesString(el) {
+    const styles = window.getComputedStyle(el);
+    let result = "";
+    for (let prop of styles) {
+        result += `${prop}: ${styles.getPropertyValue(prop)};\n`;
+    }
+    return result;
+}
+// Run on the element you inspected:
+copy(getComputedStylesString($0));
+                                    
+</code>

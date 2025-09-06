@@ -4,3 +4,10 @@ a.item-container {
 .items > .item-container{
     font-size: .8rem;
 }
+
+.footer-header .main-links>a {
+    text-wrap: nowrap;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-decoration: none;
+}

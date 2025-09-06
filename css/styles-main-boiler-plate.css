@@ -3,6 +3,7 @@
 @import './header.css';
 @import './utilities/layout.css';
 @import './utilities/borders.css';
+@import './utilities/sizing.css';
 @import './utilities/spacing.css';
 @import './utilities/effects.css';
 @import './utilities/text.css';

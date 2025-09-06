@@ -1,6 +1,5 @@
 /* flex grid ... */
 .page-wrapper main {
-    height: 70vh;
     scrollbar-width: none;
     overflow: hidden;
     overflow-y: scroll;
@@ -8,38 +7,24 @@
 .page-wrapper{
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    /* justify-content: flex-end; */
-    /* background-color: blue; */
 }
 .content-wrapper{
     display: flex;
-    /* flex-direction: column; */
-}
-.items-container{
-    margin-right: 2%;
 }
 .items-container > .items{
-    margin: 1% 0;
-    display: flex;
+    display: flex;;
 }
 .items > .item-container{
-    /* flex-basis: 20%; */
-    height: 8vh;
-    margin-left: 2%;
+
+    display: flex;
+    flex-direction: column;
 }
-.items > .item-container > h3{
-    margin-top: 1%;
-    margin-left: 2%;
-}
-main {
-    margin: 0 5%;
-    padding-top: 2.5%;
-    height: 40vh ;
-    /* overflow: hidden; */
-    /* background-color: blue; */
-}
-textarea{
-    height: 90%;
-    width: 80%;
+
+
+
+.footer-header .main-links>a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }

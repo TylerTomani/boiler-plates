@@ -1,0 +1,20 @@
+main {
+    height: 40vh;
+}
+.page-wrapper main {
+    height: 70vh;
+}
+.page-wrapper {
+    height: 100vh;
+}
+.items> .item-container {
+    height: 8vh;
+}
+textarea {
+    height: 90%;
+    width: 80%;
+}
+.footer-header .main-links>a {
+    height: 40px;
+    box-sizing: border-box;
+}
